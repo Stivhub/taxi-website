@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour Packages | YashmeeTours</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>
+    .page-header {
+      padding-top: 150px;
+      padding-bottom: 60px;
+      background: linear-gradient(135deg, var(--c-primary), var(--c-secondary));
+      color: var(--c-background);
+      text-align: center;
+    }
+
+    .page-header h1 {
+      color: var(--c-background);
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .packages-container {
+      padding: var(--section-padding);
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    .package-card {
+      display: flex;
+      flex-wrap: wrap;
+      background: white;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      transition: var(--transition-smooth);
+    }
+
+    .package-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-5px);
+    }
+
+    .package-img {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+    }
+
+    .package-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .package-details {
+      flex: 1.5;
+      min-width: 300px;
+      padding: 40px;
+    }
+
+    .pkg-price {
+      display: inline-block;
+      padding: 5px 15px;
+      background: rgba(230, 126, 34, 0.1);
+      color: var(--c-primary-dark);
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .pkg-highlights {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin: 20px 0;
+      color: var(--c-text-dark);
+    }
+
+    .pkg-highlights li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar delay-100">
+    <div class="container">
+      <div class="topbar-left">
+        <a href="tel:+917728057171">📞 +91 77280 57171</a>
+        <a href="mailto:yashmeetours@gmail.com">✉️ yashmeetours@gmail.com</a>
+      </div>
+      <div class="topbar-right">
+        <a href="#" title="Instagram">📷 Instagram</a>
+        <a href="#" title="TripAdvisor">🦉 TripAdvisor</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled">
+    <div class="container">
+      <a href="index.html" class="nav-logo">Yashmee<span>Tours</span></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="fleet.html">Our Fleet</a>
+        <a href="packages.html" class="active">Tour Packages</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <button class="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header delay-100">
+    <div class="container fade-down">
+      <h1>Exclusive Tour Packages</h1>
+      <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem;">Curated journeys through the heart of majestic
+        Rajasthan.</p>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="container packages-container">
+
+    <!-- Package 1 -->
+    <div class="package-card reveal">
+      <div class="package-img">
+        <img src="https://images.unsplash.com/photo-1601633513364-ca70b21df6dd?q=80&w=800&auto=format&fit=crop"
+          alt="Jaisalmer">
+      </div>
+      <div class="package-details">
+        <span class="pkg-price">2 Days / 1 Night | ₹5,500</span>
+        <h2 style="font-size: 2rem; margin-bottom: 10px;">Golden City Highlights</h2>
+        <p style="color: #666; line-height: 1.7;">A complete local tour of Jaisalmer including the magnificent living
+          Fort, Patwon Ki Haveli, Gadisar Lake, and a sunset at the famous Sam Sand Dunes.</p>
+        <ul class="pkg-highlights">
+          <li>Pickup & Drop anywhere in Jaisalmer</li>
+          <li>Desert Safari & Camel Ride included</li>
+          <li>Dinner at desert camp with folk dance</li>
+        </ul>
+        <a href="index.html#book" class="btn btn-primary" style="margin-top: 15px;">Book Package</a>
+      </div>
+    </div>
+
+    <!-- Package 2 -->
+    <div class="package-card reveal">
+      <div class="package-img">
+        <img src="https://images.unsplash.com/photo-1599661559683-de0140f7bdfc?q=80&w=800&auto=format&fit=crop"
+          alt="Jodhpur">
+      </div>
+      <div class="package-details">
+        <span class="pkg-price">4 Days / 3 Nights | ₹14,000</span>
+        <h2 style="font-size: 2rem; margin-bottom: 10px;">The Blue City & Desert Safari</h2>
+        <p style="color: #666; line-height: 1.7;">Combine the beauty of Jodhpur (The Blue City) with the rustic charm of
+          Jaisalmer.</p>
+        <ul class="pkg-highlights">
+          <li>Jodhpur Sightseeing (Mehrangarh Fort, Umaid Bhawan)</li>
+          <li>Scenic drive from Jodhpur to Jaisalmer</li>
+          <li>Overnight stay in Swiss Tents in Thar Desert</li>
+        </ul>
+        <a href="index.html#book" class="btn btn-primary" style="margin-top: 15px;">Book Package</a>
+      </div>
+    </div>
+
+    <!-- Package 3 -->
+    <div class="package-card reveal">
+      <div class="package-img">
+        <img src="https://images.unsplash.com/photo-1558005530-cb61e21b0b5c?q=80&w=800&auto=format&fit=crop"
+          alt="Jaipur">
+      </div>
+      <div class="package-details">
+        <span class="pkg-price">7 Days / 6 Nights | ₹25,000</span>
+        <h2 style="font-size: 2rem; margin-bottom: 10px;">Royal Rajasthan Tour</h2>
+        <p style="color: #666; line-height: 1.7;">The ultimate road trip. Cover Jaipur, Jodhpur, Udaipur, and Jaisalmer
+          in our comfortable premium AC vehicles.</p>
+        <ul class="pkg-highlights">
+          <li>Detailed itineraries tailored to your pace</li>
+          <li>All toll & parking fees included</li>
+          <li>Experienced english-speaking driver acting as a guide</li>
+        </ul>
+        <a href="index.html#book" class="btn btn-primary" style="margin-top: 15px;">Book Package</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer reveal">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 YashmeeTours. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

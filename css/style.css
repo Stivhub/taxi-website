@@ -1,0 +1,124 @@
+/* ===== VARIABLES & TYPOGRAPHY ===== */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+:root {
+  /* Premium Brown Desert Palette */
+  --c-primary: #5C3D2E;         /* Rich dark brown */
+  --c-primary-dark: #4A3022;    /* Darker hover shade */
+  --c-secondary: #8B5E3C;       /* Classic desert brown */
+  --c-background: #F5E6D3;      /* Light warm beige */
+  --c-accent: #E0A96D;          /* Soft golden sand */
+  --c-dark: #2C2C2C;            /* Dark text / contrast */
+
+  /* Derived / utility */
+  --c-text-dark: #2C2C2C;
+  --c-text-body: #4A3A2E;       /* Warm muted brown body text */
+  --c-card-bg: #FFFFFF;
+  --c-card-bg-alt: #F5E6D3;
+  --c-border: rgba(139, 94, 60, 0.15);
+
+  /* Typography */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Outfit', sans-serif;
+
+  /* Spacing */
+  --section-padding: 80px 20px;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 20px rgba(92, 61, 46, 0.07);
+  --shadow-hover: 0 12px 30px rgba(92, 61, 46, 0.14);
+  --shadow-glass: 0 8px 32px rgba(92, 61, 46, 0.08);
+
+  /* Transitions */
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--c-background);
+  color: var(--c-text-body);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--c-text-dark);
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ===== LAYOUT & UTILITIES ===== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title h2 {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--c-primary);
+}
+
+.section-title p {
+  color: var(--c-text-body);
+  font-size: 1.15rem;
+}
+
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.t-center { text-align: center; }
+.mt-2 { margin-top: 2rem; }
+.mb-2 { margin-bottom: 2rem; }
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 60px 15px;
+  }
+  .section-title h2 {
+    font-size: 2.2rem;
+  }
+}

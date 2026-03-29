@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Premium taxi booking in Rajasthan. Explore Jaisalmer and beyond with our top-tier fleet.">
+  <title>YashmeeTours | Premium Taxi Booking</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <!-- Inline styles for page-specific layout -->
+  <style>
+    /* HERO SECTION */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-top: 80px;
+      color: white;
+      overflow: hidden;
+    }
+
+    /* Background image layer (separate so we can animate it) */
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('assets/images/fort.jpg') no-repeat center/cover;
+      animation: heroZoom 20s ease-out forwards;
+      will-change: transform;
+    }
+
+    @keyframes heroZoom {
+      0% {
+        transform: scale(1.08);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Dark brown gradient overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg,
+          rgba(44, 30, 20, 0.6) 0%,
+          rgba(44, 30, 20, 0.4) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 650px;
+    }
+
+    .hero-title {
+      font-size: 3.8rem;
+      margin-bottom: 20px;
+      color: white;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+      line-height: 1.15;
+    }
+
+    .hero-title span {
+      color: var(--c-accent);
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      margin-bottom: 40px;
+      color: rgba(255, 255, 255, 0.92);
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+      max-width: 520px;
+    }
+
+    /* QUICK BOOKING WIDGET */
+    .booking-widget {
+      position: relative;
+      z-index: 2;
+      margin-top: -80px;
+    }
+
+    /* FLEET PREVIEW */
+    .fleet-preview {
+      padding: var(--section-padding);
+      background-color: #EDD9C2;
+      /* slight beige variation */
+    }
+
+    .fleet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .car-card-content {
+      padding: 20px;
+    }
+
+    .car-price {
+      color: var(--c-accent);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    /* FEATURES/WHY US */
+    .features {
+      padding: var(--section-padding);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      text-align: center;
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      color: var(--c-accent);
+      margin-bottom: 15px;
+    }
+
+    /* ROUTES */
+    .routes {
+      padding: var(--section-padding);
+      background-color: var(--c-primary);
+      color: var(--c-background);
+    }
+
+    .routes .section-title h2 {
+      color: var(--c-accent);
+    }
+
+    .routes .section-title p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .route-card {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      height: 280px;
+      cursor: pointer;
+    }
+
+    .route-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .route-card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 40px 24px 24px;
+      background: linear-gradient(to top,
+          rgba(0, 0, 0, 0.7) 0%,
+          rgba(0, 0, 0, 0.3) 60%,
+          transparent 100%);
+      color: #FFFFFF;
+      z-index: 2;
+    }
+
+    .route-card-overlay h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      margin-bottom: 4px;
+    }
+
+    .route-card-overlay p {
+      font-size: 0.95rem;
+      color: #F5E6D3;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .route-card:hover img {
+      transform: scale(1.08);
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.4rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.05rem;
+      }
+
+      .hero-bg {
+        background-position: 65% center;
+      }
+
+      .booking-widget {
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar delay-100">
+    <div class="container">
+      <div class="topbar-left">
+        <a href="tel:+917728057171">📞 +91 77280 57171</a>
+        <a href="mailto:yashmeetours@gmail.com">✉️ yashmeetours@gmail.com</a>
+      </div>
+      <div class="topbar-right">
+        <a href="#" title="Instagram">📷 Instagram</a>
+        <a href="#" title="TripAdvisor">🦉 TripAdvisor</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">Yashmee<span>Tours</span></a>
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="services.html">Services</a>
+        <a href="fleet.html">Our Fleet</a>
+        <a href="packages.html">Tour Packages</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <button class="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-content fade-down">
+        <h1 class="hero-title">Experience the <span>Magic</span> of Rajasthan</h1>
+        <p class="hero-subtitle delay-100">Premium taxi services across Jaisalmer, Jaipur, Jodhpur, and Udaipur.
+          Comfort, safety, and luxury combined.</p>
+        <a href="#book" class="btn btn-primary delay-200">Explore Fleet</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK BOOKING WIDGET -->
+  <section class="booking-widget" id="book">
+    <div class="container">
+      <div class="glass-card reveal">
+        <h3 class="mb-2" style="font-family: var(--font-heading); color: var(--c-primary);">Book Your Ride</h3>
+        <form id="main-booking-form" class="booking-form">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" class="form-control" placeholder="E.g., Rahul Sharma" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" class="form-control" placeholder="E.g., 77280 57171" required>
+          </div>
+          <div class="form-group">
+            <label for="pickup">Pickup Location</label>
+            <input type="text" id="pickup" class="form-control" placeholder="E.g., Jaisalmer Fort" required>
+          </div>
+          <div class="form-group">
+            <label for="drop">Drop Location</label>
+            <input type="text" id="drop" class="form-control" placeholder="E.g., Sam Sand Dunes" required>
+          </div>
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="type">Trip Type</label>
+            <select id="type" class="form-control">
+              <option>One-way</option>
+              <option>Round-trip</option>
+              <option>Local Sightseeing</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="car">Select Car</label>
+            <select id="car" class="form-control" required>
+              <option value="" disabled selected>Select Car Type</option>
+              <option>Sedan (Swift Dzire / Etios)</option>
+              <option>SUV (Innova / Ertiga)</option>
+              <option>Tempo Traveller (9-12 Seater)</option>
+              <option>Luxury Car</option>
+              <option>Any Available</option>
+            </select>
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <button type="submit" id="booking-btn" class="btn btn-primary"
+              style="width:100%; height:56px; font-size:1.1rem;">
+              Book via WhatsApp
+            </button>
+            <p id="booking-status"
+              style="text-align:center; margin-top:12px; font-weight:600; color: var(--c-secondary); display:none;"></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAB SERVICE IN JAISALMER -->
+  <section class="jaisalmer-service reveal">
+    <div class="jaisalmer-content">
+      <h2 class="reveal reveal-stagger-1">Premium Cab Service in Jaisalmer</h2>
+      <p class="reveal reveal-stagger-2" style="font-size: 1.15rem; color: var(--c-background); margin-bottom: 20px;">
+        Experience the majestic Thar Desert and golden forts with our reliable, luxury local fleet. Whether you need a
+        quick drop or a full-day sightseeing tour, we guarantee an unforgettable journey.
+      </p>
+      <div class="jaisalmer-features reveal reveal-stagger-3">
+        <span>✅ Local Expert Drivers</span>
+        <span>✅ Affordable Pricing</span>
+        <span>✅ 24/7 Availability</span>
+        <span>✅ Spotless Vehicles</span>
+      </div>
+      <a href="#book" class="btn btn-primary reveal reveal-stagger-3">Book Your Cab Now</a>
+    </div>
+  </section>
+
+
+  <!-- WHY CHOOSE US -->
+  <section class="features reveal">
+    <div class="container">
+      <div class="section-title">
+        <h2>Why Travel With Us?</h2>
+        <p>We deliver a royal experience with every mile.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-item reveal reveal-stagger-1">
+          <div class="feature-icon">🛡️</div>
+          <h3>Safe & Secure</h3>
+          <p>Verified drivers and well-maintained vehicles for absolute peace of mind.</p>
+        </div>
+        <div class="feature-item reveal reveal-stagger-2">
+          <div class="feature-icon">🌟</div>
+          <h3>Premium Fleet</h3>
+          <p>From comfortable sedans to luxurious SUVs, travel like royalty.</p>
+        </div>
+        <div class="feature-item reveal reveal-stagger-3">
+          <div class="feature-icon">⏱️</div>
+          <h3>Punctual Service</h3>
+          <p>On-time pickups and smooth journeys across all Rajasthan routes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOMER REVIEWS -->
+  <section class="testimonials reveal">
+    <div class="container">
+      <div class="section-title">
+        <h2>What Our Customers Say</h2>
+        <p>Real experiences from happy travelers</p>
+      </div>
+
+      <div class="testimonial-carousel" id="testimonial-carousel">
+        <div class="testimonial-track-wrapper">
+          <div class="testimonial-track" id="testimonial-track">
+
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">RS</div>
+                <div class="testimonial-info">
+                  <h4>Rahul Sharma</h4>
+                  <span>Delhi</span>
+                </div>
+              </div>
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="testimonial-text">"Great service! Driver was polite and the car was very clean. Highly
+                recommended for Rajasthan travel."</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">PM</div>
+                <div class="testimonial-info">
+                  <h4>Priya Mehta</h4>
+                  <span>Mumbai</span>
+                </div>
+              </div>
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="testimonial-text">"Smooth booking experience and on-time pickup. Made our Jaisalmer trip
+                absolutely amazing."</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">AV</div>
+                <div class="testimonial-info">
+                  <h4>Aman Verma</h4>
+                  <span>Jaipur</span>
+                </div>
+              </div>
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="testimonial-text">"Affordable pricing and very professional service. Will definitely book again
+                for our next trip!"</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">SK</div>
+                <div class="testimonial-info">
+                  <h4>Sneha Kapoor</h4>
+                  <span>Bangalore</span>
+                </div>
+              </div>
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="testimonial-text">"Loved the desert trip arrangement. Everything was perfectly managed from
+                start to finish."</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">AS</div>
+                <div class="testimonial-info">
+                  <h4>Arjun Singh</h4>
+                  <span>Chandigarh</span>
+                </div>
+              </div>
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="testimonial-text">"Quick response on WhatsApp and hassle-free ride. Great experience overall,
+                truly premium."</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="carousel-nav">
+          <button class="carousel-btn" id="carousel-prev" aria-label="Previous review">&#8249;</button>
+          <div class="carousel-dots" id="carousel-dots"></div>
+          <button class="carousel-btn" id="carousel-next" aria-label="Next review">&#8250;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLEET PREVIEW -->
+  <section class="fleet-preview reveal">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Popular Fleet</h2>
+        <p>Choose the perfect vehicle for your desert adventure.</p>
+      </div>
+
+      <div class="fleet-grid">
+        <!-- Car 1 -->
+        <div class="hover-card reveal reveal-stagger-1">
+          <div class="img-zoom-wrapper">
+            <!-- Using Unsplash placeholder for car -->
+            <img src="./assets/images/innova.png" alt="Toyota Innova Crysta"
+              style="height: 220px; width: 100%; object-fit: cover;">
+          </div>
+          <div class="car-card-content">
+            <h3>Toyota Innova Crysta</h3>
+            <p class="car-price">₹18 / km</p>
+            <p style="margin: 10px 0; color: #666;">Perfect for family trips. AC, comfortable seating for 6+1.</p>
+            <a href="fleet.html" class="btn btn-secondary">View Details</a>
+          </div>
+        </div>
+
+        <!-- Car 2 -->
+        <div class="hover-card reveal reveal-stagger-2">
+          <div class="img-zoom-wrapper">
+            <img src="./assets/images/dzire.png" alt="Swift Dzire"
+              style="height: 220px; width: 100%; object-fit: cover;">
+          </div>
+          <div class="car-card-content">
+            <h3>Swift Dzire</h3>
+            <p class="car-price">₹11 / km</p>
+            <p style="margin: 10px 0; color: #666;">Ideal for couples and small families. AC, 4+1 seating.</p>
+            <a href="fleet.html" class="btn btn-secondary">View Details</a>
+          </div>
+        </div>
+
+        <!-- Car 3 -->
+        <div class="hover-card reveal reveal-stagger-3">
+          <div class="img-zoom-wrapper">
+            <img src="./assets/images/fortuner.png" alt="Toyota Fortuner"
+              style="height: 220px; width: 100%; object-fit: cover;">
+          </div>
+          <div class="car-card-content">
+            <h3>Toyota Fortuner</h3>
+            <p class="car-price">₹25 / km</p>
+            <p style="margin: 10px 0; color: #666;">Ultimate luxury SUV for VIP travel and desert tough roads.</p>
+            <a href="fleet.html" class="btn btn-secondary">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-center mt-2 reveal">
+        <a href="fleet.html" class="btn btn-primary" style="margin-top: 2rem;">Explore Full Fleet</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPULAR ROUTES -->
+  <section class="routes reveal">
+    <div class="container">
+      <div class="section-title">
+        <h2>Popular Routes</h2>
+        <p>Discover the rich heritage of Rajasthan.</p>
+      </div>
+
+      <div class="flex-row">
+        <!-- Route 1 -->
+        <div class="route-card reveal reveal-stagger-1" style="flex: 1; min-width: 250px;">
+          <img src="./assets/images/jaisalmer (1).jpg" alt="Jaisalmer Fort">
+          <div class="route-card-overlay">
+            <h3>Jaisalmer City Tour</h3>
+            <p>Full day sightseeing</p>
+          </div>
+        </div>
+        <!-- Route 2 -->
+        <div class="route-card reveal reveal-stagger-2" style="flex: 1; min-width: 250px;">
+          <img src="./assets/images/udaipur.jpg" alt="Udaipur">
+          <div class="route-card-overlay">
+            <h3>Jodhpur to Udaipur</h3>
+            <p>One-way drop (260km)</p>
+          </div>
+        </div>
+        <!-- Route 3 -->
+        <div class="route-card reveal reveal-stagger-3" style="flex: 1; min-width: 250px;">
+          <img src="./assets/images/jaipur.jpg" alt="Jaipur">
+          <div class="route-card-overlay">
+            <h3>Jaipur to Jaisalmer</h3>
+            <p>Heritage route (560km)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- FOOTER -->
+  <footer class="footer reveal">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="nav-logo" style="color:var(--c-background);">Yashmee<span
+              style="color:var(--c-accent);">Tours</span></a>
+          <p style="margin-top: 15px; color: rgba(255,255,255,0.7);">Your premium travel partner in the magnificent Thar
+            Desert and across Rajasthan.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="fleet.html">Our Fleet</a></li>
+            <li><a href="packages.html">Tour Packages</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Info</h4>
+          <ul class="footer-links" style="color: rgba(255,255,255,0.8);">
+            <li style="margin-bottom: 10px;">📞 +91 77280 57171</li>
+            <li style="margin-bottom: 10px;">📧 yashmeetours@gmail.com</li>
+            <li>📍 123 Heritage Road, Near Fort, Jaisalmer, Rajasthan 345001</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 YashmeeTours. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING ACTIONS -->
+  <div class="floating-actions">
+    <a href="tel:+917728057171" class="fab fab-call" title="Call Us">📞</a>
+    <!-- Default message predefined -->
+    <a href="https://wa.me/917728057171?text=Hello%20YashmeeTours!%20I%20am%20looking%20for%20a%20taxi." target="_blank"
+      class="fab fab-whatsapp" title="WhatsApp Us">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a5.8 5.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.015-1.04 2.476 1.065 2.872 1.213 3.071c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+      </svg>
+    </a>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+/* ===== ANIMATIONS ===== */
+
+/* Scroll Reveal Classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered reveals for multiple elements in a row */
+.reveal-stagger-1 { transition-delay: 0.1s; }
+.reveal-stagger-2 { transition-delay: 0.2s; }
+.reveal-stagger-3 { transition-delay: 0.3s; }
+
+/* Image Hover Zoom (for cards) */
+.img-zoom-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.img-zoom-wrapper img {
+  transition: transform 0.5s ease;
+}
+
+.hover-card:hover .img-zoom-wrapper img {
+  transform: scale(1.08);
+}
+
+/* Pulse Animation for WhatsApp */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* Fade Down for Hero Elements */
+.fade-down {
+  animation: fadeDown 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade Up for Hero Elements */
+.fade-up {
+  animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Delay classes for initial load */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }

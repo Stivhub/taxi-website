@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services | YashmeeTours</title>
+  <meta name="description"
+    content="Explore our premium services including Desert Camping, Safari, Hotel Bookings, and Taxi Services across Rajasthan.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>
+    .page-header {
+      padding-top: 150px;
+      padding-bottom: 60px;
+      background: linear-gradient(135deg, var(--c-primary), var(--c-secondary));
+      color: var(--c-background);
+      text-align: center;
+    }
+
+    .page-header h1 {
+      color: var(--c-background);
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .services-page-grid {
+      padding: var(--section-padding);
+    }
+
+    .service-detail-card {
+      background: var(--c-card-bg);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      transition: var(--transition-smooth);
+      border: 1px solid rgba(230, 211, 163, 0.3);
+    }
+
+    .service-detail-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover), 0 0 15px rgba(212, 175, 55, 0.2);
+    }
+
+    .service-detail-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .service-detail-card:hover .service-detail-img {
+      transform: scale(1.05);
+    }
+
+    .service-detail-body {
+      padding: 30px;
+    }
+
+    .service-detail-body h3 {
+      font-family: var(--font-heading);
+      color: var(--c-text-dark);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .service-detail-body p {
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .service-highlights {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .service-highlights li {
+      padding: 5px 0;
+      color: var(--c-text-body);
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar delay-100">
+    <div class="container">
+      <div class="topbar-left">
+        <a href="tel:+917728057171">📞 +91 77280 57171</a>
+        <a href="mailto:yashmeetours@gmail.com">✉️ yashmeetours@gmail.com</a>
+      </div>
+      <div class="topbar-right">
+        <a href="#" title="Instagram">📷 Instagram</a>
+        <a href="#" title="TripAdvisor">🦉 TripAdvisor</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled">
+    <div class="container">
+      <a href="index.html" class="nav-logo">Yashmee<span>Tours</span></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="fleet.html">Our Fleet</a>
+        <a href="packages.html">Tour Packages</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <button class="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container fade-down">
+      <h1>Our Services</h1>
+      <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem;">Complete travel solutions across Rajasthan — beyond
+        just a ride.</p>
+    </div>
+  </section>
+
+  <!-- JAISALMER SPOTLIGHT -->
+  <section class="jaisalmer-service reveal">
+    <div class="jaisalmer-content">
+      <h2 class="reveal reveal-stagger-1">Premium Cab Service in Jaisalmer</h2>
+      <p class="reveal reveal-stagger-2" style="font-size: 1.15rem; color: #E6D3A3; margin-bottom: 20px;">
+        Experience the majestic Thar Desert and golden forts with our reliable, luxury local fleet. Whether you need a
+        quick drop or a full-day sightseeing tour, we guarantee an unforgettable journey.
+      </p>
+      <div class="jaisalmer-features reveal reveal-stagger-3">
+        <span>✅ Local Expert Drivers</span>
+        <span>✅ Affordable Pricing</span>
+        <span>✅ 24/7 Availability</span>
+        <span>✅ Spotless Vehicles</span>
+      </div>
+      <a href="index.html#book" class="btn btn-primary reveal reveal-stagger-3">Book Your Cab Now</a>
+    </div>
+  </section>
+
+  <!-- SERVICES GRID -->
+  <section class="services-page-grid">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>What We Offer</h2>
+        <p>From desert adventures to seamless travel, we've got you covered.</p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Desert Camping -->
+        <div class="service-detail-card reveal reveal-stagger-1">
+          <div style="overflow: hidden;">
+            <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=800&auto=format&fit=crop"
+              alt="Desert Camping" class="service-detail-img">
+          </div>
+          <div class="service-detail-body">
+            <h3>🏕️ Desert Camping</h3>
+            <p>Spend a magical night under the stars in our luxury Swiss tents at Sam Sand Dunes. Enjoy traditional
+              Rajasthani folk music, dance, and a sumptuous dinner under the open sky.</p>
+            <ul class="service-highlights">
+              <li>✅ Luxury Swiss & Royal Tents</li>
+              <li>✅ Folk Music & Dance Show</li>
+              <li>✅ Buffet Dinner & Breakfast</li>
+            </ul>
+            <a href="index.html#book" class="btn btn-primary" style="width:100%;">Enquire Now</a>
+          </div>
+        </div>
+
+        <!-- Desert Safari -->
+        <div class="service-detail-card reveal reveal-stagger-2">
+          <div style="overflow: hidden;">
+            <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?q=80&w=800&auto=format&fit=crop"
+              alt="Desert Safari" class="service-detail-img">
+          </div>
+          <div class="service-detail-body">
+            <h3>🐪 Desert Safari</h3>
+            <p>Experience the thrill of the Thar Desert with our exhilarating Jeep safaris and magical sunset camel
+              rides. An adventure you'll never forget.</p>
+            <ul class="service-highlights">
+              <li>✅ 4x4 Jeep Dune Bashing</li>
+              <li>✅ Sunset Camel Safari</li>
+              <li>✅ Professional Guides</li>
+            </ul>
+            <a href="index.html#book" class="btn btn-primary" style="width:100%;">Enquire Now</a>
+          </div>
+        </div>
+
+        <!-- Hotel Bookings -->
+        <div class="service-detail-card reveal reveal-stagger-3">
+          <div style="overflow: hidden;">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop"
+              alt="Hotel Bookings" class="service-detail-img">
+          </div>
+          <div class="service-detail-body">
+            <h3>🏨 Hotel Bookings</h3>
+            <p>We partner with the finest heritage havelis and luxury hotels in Jaisalmer, Jodhpur, and Udaipur to give
+              you a truly royal stay.</p>
+            <ul class="service-highlights">
+              <li>✅ Handpicked Heritage Hotels</li>
+              <li>✅ Budget to Luxury Options</li>
+              <li>✅ Best Rate Guarantee</li>
+            </ul>
+            <a href="index.html#book" class="btn btn-primary" style="width:100%;">Enquire Now</a>
+          </div>
+        </div>
+
+        <!-- Taxi Services -->
+        <div class="service-detail-card reveal reveal-stagger-1">
+          <div style="overflow: hidden;">
+            <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=800&auto=format&fit=crop"
+              alt="Taxi Services" class="service-detail-img">
+          </div>
+          <div class="service-detail-body">
+            <h3>🚖 Taxi Services</h3>
+            <p>One-way outstation drops, local sightseeing tours, and round trip taxi services across all of Rajasthan
+              with well-maintained vehicles and professional drivers.</p>
+            <ul class="service-highlights">
+              <li>✅ One-way & Round-trip</li>
+              <li>✅ Local City Sightseeing</li>
+              <li>✅ Airport & Station Transfers</li>
+            </ul>
+            <a href="fleet.html" class="btn btn-primary" style="width:100%;">View Our Fleet</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer reveal">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 YashmeeTours. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
