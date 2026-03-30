@@ -4,11 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Fleet | YashmeeTours</title>
+  <meta name="description"
+    content="Explore YashmeeTours premium fleet of vehicles for taxi and travel services across Rajasthan. Sedans, SUVs, MPVs and group travellers available.">
+  <title>Our Fleet | YashmeeTours – Premium Taxi Vehicles</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/animations.css">
   <style>
+    /* PAGE HEADER */
     .page-header {
       padding-top: 150px;
       padding-bottom: 60px;
@@ -23,22 +26,222 @@
       margin-bottom: 15px;
     }
 
-    .fleet-grid-large {
-      padding: var(--section-padding);
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 40px;
+    .page-header p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    .fleet-specs {
+    /* CATEGORY FILTER TABS */
+    .fleet-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 40px 20px 10px;
+    }
+
+    .filter-btn {
+      padding: 10px 28px;
+      border: 2px solid var(--c-secondary);
+      border-radius: var(--radius-pill);
+      background: transparent;
+      color: var(--c-secondary);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--c-secondary);
+      color: white;
+      box-shadow: 0 4px 15px rgba(139, 94, 60, 0.25);
+    }
+
+    /* FLEET SECTION */
+    .fleet-section {
+      padding: 30px 20px 80px;
+    }
+
+    .fleet-grid-large {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* CAR CARD */
+    .car-card {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--c-card-bg);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--c-border);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .car-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .car-card-img {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+    }
+
+    .car-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .car-card:hover .car-card-img img {
+      transform: scale(1.08);
+    }
+
+    /* Category Badge */
+    .car-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(92, 61, 46, 0.88);
+      backdrop-filter: blur(8px);
+      color: var(--c-accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 5px 14px;
+      border-radius: var(--radius-pill);
+      z-index: 2;
+    }
+
+    /* Price Tag */
+    .car-price-tag {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      background: var(--c-accent);
+      color: var(--c-primary);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      z-index: 2;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .car-card-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .car-card-content h3 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      color: var(--c-primary);
+      margin-bottom: 12px;
+    }
+
+    /* Specs Row */
+    .car-specs {
       display: flex;
       justify-content: space-between;
-      border-top: 1px solid #eee;
-      border-bottom: 1px solid #eee;
-      padding: 10px 0;
-      margin: 15px 0;
-      font-size: 0.9rem;
+      border-top: 1px solid var(--c-border);
+      border-bottom: 1px solid var(--c-border);
+      padding: 12px 0;
+      margin-bottom: 14px;
+    }
+
+    .car-spec-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.88rem;
+      color: var(--c-text-body);
+    }
+
+    .car-spec-item .spec-icon {
+      font-size: 1.1rem;
+    }
+
+    .car-card-desc {
       color: #666;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .car-card .btn {
+      width: 100%;
+      text-align: center;
+    }
+
+    /* CTA Banner */
+    .fleet-cta {
+      background: linear-gradient(135deg, var(--c-primary) 0%, var(--c-secondary) 100%);
+      padding: 60px 20px;
+      text-align: center;
+      color: var(--c-background);
+    }
+
+    .fleet-cta h2 {
+      color: var(--c-accent);
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .fleet-cta p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .fleet-grid-large {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-header h1 {
+        font-size: 2.2rem;
+      }
+
+      .fleet-grid-large {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .car-card-img {
+        height: 200px;
+      }
+
+      .fleet-cta h2 {
+        font-size: 2rem;
+      }
+
+      .filter-btn {
+        padding: 8px 20px;
+        font-size: 0.88rem;
+      }
     }
   </style>
 </head>
@@ -53,7 +256,7 @@
         <a href="mailto:yashmeetours@gmail.com">✉️ yashmeetours@gmail.com</a>
       </div>
       <div class="topbar-right">
-        <a href="#" title="Instagram">📷 Instagram</a>
+        <a href="https://instagram.com/yashmee_tours" target="_blank" title="Instagram">📷 Instagram</a>
         <a href="#" title="TripAdvisor">🦉 TripAdvisor</a>
       </div>
     </div>
@@ -81,109 +284,313 @@
   <section class="page-header delay-100">
     <div class="container fade-down">
       <h1>Our Premium Fleet</h1>
-      <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem;">Travel in comfort and style across the Golden City and
-        beyond.</p>
+      <p>Travel in comfort and style across the Golden City and beyond. Choose the perfect vehicle for your Rajasthan
+        adventure.</p>
     </div>
   </section>
 
+  <!-- CATEGORY FILTERS -->
+  <div class="fleet-filters reveal">
+    <button class="filter-btn active" data-filter="all" id="filter-all">All Vehicles</button>
+    <button class="filter-btn" data-filter="sedan" id="filter-sedan">Sedans</button>
+    <button class="filter-btn" data-filter="suv" id="filter-suv">SUVs</button>
+    <button class="filter-btn" data-filter="mpv" id="filter-mpv">MPVs</button>
+    <button class="filter-btn" data-filter="group" id="filter-group">Group Travel</button>
+  </div>
+
   <!-- FLEET GRID -->
-  <section class="container reveal">
-    <div class="fleet-grid-large">
+  <section class="fleet-section">
+    <div class="fleet-grid-large" id="fleet-grid">
 
-      <!-- Car 1 -->
-      <div class="hover-card reveal reveal-stagger-1">
-        <div class="img-zoom-wrapper">
-          <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=800&auto=format&fit=crop"
-            style="height: 250px; width:100%; object-fit: cover;">
-        </div>
-        <div class="car-card-content">
-          <h3>Toyota Innova Crysta</h3>
-          <p class="car-price">₹18 / km</p>
-          <div class="fleet-specs">
-            <span>💺 6+1 Seats</span>
-            <span>❄️ AC</span>
-            <span>🧳 4 Bags</span>
-          </div>
-          <p style="margin-bottom: 20px; color: #555;">The ultimate family vehicle for long road trips across Rajasthan.
-            Spacious, comfortable, and reliable.</p>
-          <a href="index.html#book" class="btn btn-primary" style="width:100%;">Book Now</a>
-        </div>
-      </div>
-
-      <!-- Car 2 -->
-      <div class="hover-card reveal reveal-stagger-2">
-        <div class="img-zoom-wrapper">
-          <img src="https://images.unsplash.com/photo-1550346699-b1d7d56e7552?q=80&w=800&auto=format&fit=crop"
-            style="height: 250px; width:100%; object-fit: cover;">
+      <!-- 1. Swift Dzire -->
+      <div class="car-card reveal reveal-stagger-1" data-category="sedan">
+        <div class="car-card-img">
+          <span class="car-badge">Sedan</span>
+          <span class="car-price-tag">₹11/km</span>
+          <img src="./assets/images/dzire.png" alt="Swift Dzire Sedan" loading="lazy">
         </div>
         <div class="car-card-content">
           <h3>Swift Dzire</h3>
-          <p class="car-price">₹11 / km</p>
-          <div class="fleet-specs">
-            <span>💺 4+1 Seats</span>
-            <span>❄️ AC</span>
-            <span>🧳 2 Bags</span>
+          <div class="car-specs">
+            <span class="car-spec-item"><span class="spec-icon">💺</span> 4+1 Seats</span>
+            <span class="car-spec-item"><span class="spec-icon">❄️</span> AC</span>
+            <span class="car-spec-item"><span class="spec-icon">🧳</span> 2 Bags</span>
           </div>
-          <p style="margin-bottom: 20px; color: #555;">Perfect for couples or small families for local sightseeing and
-            short intercity trips.</p>
-          <a href="index.html#book" class="btn btn-primary" style="width:100%;">Book Now</a>
+          <p class="car-card-desc">India's most popular sedan for local sightseeing and short intercity trips. Fuel
+            efficient, compact, and comfortable for couples or small families.</p>
+          <a href="index.html#book" class="btn btn-primary" id="book-dzire">Book Now</a>
         </div>
       </div>
 
-      <!-- Car 3 -->
-      <div class="hover-card reveal reveal-stagger-3">
-        <div class="img-zoom-wrapper">
-          <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=800&auto=format&fit=crop"
-            style="height: 250px; width:100%; object-fit: cover;">
+      <!-- 2. Toyota Etios -->
+      <div class="car-card reveal reveal-stagger-2" data-category="sedan">
+        <div class="car-card-img">
+          <span class="car-badge">Sedan</span>
+          <span class="car-price-tag">₹12/km</span>
+          <img src="./assets/images/toyota-etios.png" alt="Toyota Etios Sedan" loading="lazy">
+        </div>
+        <div class="car-card-content">
+          <h3>Toyota Etios</h3>
+          <div class="car-specs">
+            <span class="car-spec-item"><span class="spec-icon">💺</span> 4+1 Seats</span>
+            <span class="car-spec-item"><span class="spec-icon">❄️</span> AC</span>
+            <span class="car-spec-item"><span class="spec-icon">🧳</span> 3 Bags</span>
+          </div>
+          <p class="car-card-desc">Toyota's trusted sedan built for Indian roads. Spacious cabin, excellent legroom,
+            and bullet-proof reliability for long-distance comfort.</p>
+          <a href="index.html#book" class="btn btn-primary" id="book-etios">Book Now</a>
+        </div>
+      </div>
+
+      <!-- 3. Hyundai Creta -->
+      <div class="car-card reveal reveal-stagger-3" data-category="suv">
+        <div class="car-card-img">
+          <span class="car-badge">SUV</span>
+          <span class="car-price-tag">₹14/km</span>
+          <img src="./assets/images/hyundai-creta.png" alt="Hyundai Creta SUV" loading="lazy">
+        </div>
+        <div class="car-card-content">
+          <h3>Hyundai Creta</h3>
+          <div class="car-specs">
+            <span class="car-spec-item"><span class="spec-icon">💺</span> 4+1 Seats</span>
+            <span class="car-spec-item"><span class="spec-icon">❄️</span> AC</span>
+            <span class="car-spec-item"><span class="spec-icon">🧳</span> 3 Bags</span>
+          </div>
+          <p class="car-card-desc">A stylish and feature-rich compact SUV with panoramic sunroof, premium interiors,
+            and a smooth ride perfect for Rajasthan highways.</p>
+          <a href="index.html#book" class="btn btn-primary" id="book-creta">Book Now</a>
+        </div>
+      </div>
+
+      <!-- 4. Kia Seltos -->
+      <div class="car-card reveal reveal-stagger-1" data-category="suv">
+        <div class="car-card-img">
+          <span class="car-badge">SUV</span>
+          <span class="car-price-tag">₹14/km</span>
+          <img src="./assets/images/kia-seltos.png" alt="Kia Seltos SUV" loading="lazy">
+        </div>
+        <div class="car-card-content">
+          <h3>Kia Seltos</h3>
+          <div class="car-specs">
+            <span class="car-spec-item"><span class="spec-icon">💺</span> 4+1 Seats</span>
+            <span class="car-spec-item"><span class="spec-icon">❄️</span> AC</span>
+            <span class="car-spec-item"><span class="spec-icon">🧳</span> 3 Bags</span>
+          </div>
+          <p class="car-card-desc">A modern, tech-loaded compact SUV with connected car features, ventilated seats,
+            and a powerful engine for effortless desert drives.</p>
+          <a href="index.html#book" class="btn btn-primary" id="book-seltos">Book Now</a>
+        </div>
+      </div>
+
+      <!-- 5. Mahindra Scorpio -->
+      <div class="car-card reveal reveal-stagger-2" data-category="suv">
+        <div class="car-card-img">
+          <span class="car-badge">SUV</span>
+          <span class="car-price-tag">₹16/km</span>
+          <img src="./assets/images/mahindra-scorpio.png" alt="Mahindra Scorpio SUV" loading="lazy">
+        </div>
+        <div class="car-card-content">
+          <h3>Mahindra Scorpio</h3>
+          <div class="car-specs">
+            <span class="car-spec-item"><span class="spec-icon">💺</span> 6+1 Seats</span>
+            <span class="car-spec-item"><span class="spec-icon">❄️</span> AC</span>
+            <span class="car-spec-item"><span class="spec-icon">🧳</span> 4 Bags</span>
+          </div>
+          <p class="car-card-desc">A bold and rugged SUV built to conquer tough desert terrain. Commanding road
+            presence with spacious seating for the whole family.</p>
+          <a href="index.html#book" class="btn btn-primary" id="book-scorpio">Book Now</a>
+        </div>
+      </div>
+
+      <!-- 6. Mahindra Thar -->
+      <div class="car-card reveal reveal-stagger-3" data-category="suv">
+        <div class="car-card-img">
+          <span class="car-badge">SUV</span>
+          <span class="car-price-tag">₹18/km</span>
+          <img src="./assets/images/mahindra-thar.png" alt="Mahindra Thar Off-Road SUV" loading="lazy">
+        </div>
+        <div class="car-card-content">
+          <h3>Mahindra Thar</h3>
+          <div class="car-specs">
+            <span class="car-spec-item"><span class="spec-icon">💺</span> 4 Seats</span>
+            <span class="car-spec-item"><span class="spec-icon">❄️</span> AC</span>
+            <span class="car-spec-item"><span class="spec-icon">🧳</span> 2 Bags</span>
+          </div>
+          <p class="car-card-desc">The ultimate off-road adventure vehicle. Convertible top, 4x4 capability, and
+            rugged styling — perfect for Thar Desert exploration.</p>
+          <a href="index.html#book" class="btn btn-primary" id="book-thar">Book Now</a>
+        </div>
+      </div>
+
+      <!-- 7. Toyota Fortuner -->
+      <div class="car-card reveal reveal-stagger-1" data-category="suv">
+        <div class="car-card-img">
+          <span class="car-badge">Premium SUV</span>
+          <span class="car-price-tag">₹25/km</span>
+          <img src="./assets/images/fortuner.png" alt="Toyota Fortuner Premium SUV" loading="lazy">
         </div>
         <div class="car-card-content">
           <h3>Toyota Fortuner</h3>
-          <p class="car-price">₹25 / km</p>
-          <div class="fleet-specs">
-            <span>💺 6+1 Seats</span>
-            <span>❄️ AC</span>
-            <span>🧳 5 Bags</span>
+          <div class="car-specs">
+            <span class="car-spec-item"><span class="spec-icon">💺</span> 6+1 Seats</span>
+            <span class="car-spec-item"><span class="spec-icon">❄️</span> AC</span>
+            <span class="car-spec-item"><span class="spec-icon">🧳</span> 5 Bags</span>
           </div>
-          <p style="margin-bottom: 20px; color: #555;">Experience true luxury. The best SUV for tough desert terrains
-            while keeping maximum comfort.</p>
-          <a href="index.html#book" class="btn btn-primary" style="width:100%;">Book Now</a>
+          <p class="car-card-desc">The pinnacle of SUV luxury. Powerful engine, plush leather interior, and supreme
+            comfort for VIP travel across tough desert roads.</p>
+          <a href="index.html#book" class="btn btn-primary" id="book-fortuner">Book Now</a>
         </div>
       </div>
 
-      <!-- Car 4 -->
-      <div class="hover-card reveal reveal-stagger-1">
-        <div class="img-zoom-wrapper">
-          <img src="https://images.unsplash.com/photo-1546545199-73fb12948cde?q=80&w=800&auto=format&fit=crop"
-            alt="Tempo Traveller" style="height: 250px; width:100%; object-fit: cover;">
+      <!-- 8. Maruti Ertiga -->
+      <div class="car-card reveal reveal-stagger-2" data-category="mpv">
+        <div class="car-card-img">
+          <span class="car-badge">MPV</span>
+          <span class="car-price-tag">₹13/km</span>
+          <img src="./assets/images/maruti-ertiga.png" alt="Maruti Ertiga MPV" loading="lazy">
+        </div>
+        <div class="car-card-content">
+          <h3>Maruti Ertiga</h3>
+          <div class="car-specs">
+            <span class="car-spec-item"><span class="spec-icon">💺</span> 6+1 Seats</span>
+            <span class="car-spec-item"><span class="spec-icon">❄️</span> AC</span>
+            <span class="car-spec-item"><span class="spec-icon">🧳</span> 3 Bags</span>
+          </div>
+          <p class="car-card-desc">India's favourite MPV for family travel. Three-row seating, excellent fuel economy,
+            and a smooth ride at an unbeatable value.</p>
+          <a href="index.html#book" class="btn btn-primary" id="book-ertiga">Book Now</a>
+        </div>
+      </div>
+
+      <!-- 9. Toyota Innova Crysta -->
+      <div class="car-card reveal reveal-stagger-3" data-category="mpv">
+        <div class="car-card-img">
+          <span class="car-badge">Premium MPV</span>
+          <span class="car-price-tag">₹18/km</span>
+          <img src="./assets/images/innova-crysta.png" alt="Toyota Innova Crysta Premium MPV" loading="lazy">
+        </div>
+        <div class="car-card-content">
+          <h3>Toyota Innova Crysta</h3>
+          <div class="car-specs">
+            <span class="car-spec-item"><span class="spec-icon">💺</span> 6+1 Seats</span>
+            <span class="car-spec-item"><span class="spec-icon">❄️</span> AC</span>
+            <span class="car-spec-item"><span class="spec-icon">🧳</span> 4 Bags</span>
+          </div>
+          <p class="car-card-desc">The gold standard of family travel in India. Captain seats, powerful diesel engine,
+            and unmatched comfort for long Rajasthan road trips.</p>
+          <a href="index.html#book" class="btn btn-primary" id="book-innova">Book Now</a>
+        </div>
+      </div>
+
+      <!-- 10. Tempo Traveller -->
+      <div class="car-card reveal reveal-stagger-1" data-category="group">
+        <div class="car-card-img">
+          <span class="car-badge">Group</span>
+          <span class="car-price-tag">₹28/km</span>
+          <img src="./assets/images/tempo-traveller.png" alt="Tempo Traveller 12 Seater" loading="lazy">
         </div>
         <div class="car-card-content">
           <h3>Tempo Traveller</h3>
-          <p class="car-price">₹28 / km</p>
-          <div class="fleet-specs">
-            <span>💺 12 to 16 Seats</span>
-            <span>❄️ AC</span>
-            <span>🧳 Large Boot</span>
+          <div class="car-specs">
+            <span class="car-spec-item"><span class="spec-icon">💺</span> 9–12 Seats</span>
+            <span class="car-spec-item"><span class="spec-icon">❄️</span> AC</span>
+            <span class="car-spec-item"><span class="spec-icon">🧳</span> Large Boot</span>
           </div>
-          <p style="margin-bottom: 20px; color: #555;">Ideal for large group tours and corporate trips across the
-            heritage cities.</p>
-          <a href="index.html#book" class="btn btn-primary" style="width:100%;">Book Now</a>
+          <p class="car-card-desc">Ideal for large groups, corporate outings, and wedding parties. Pushback seats,
+            spacious aisle, and ample luggage space for heritage city tours.</p>
+          <a href="index.html#book" class="btn btn-primary" id="book-tempo">Book Now</a>
         </div>
       </div>
 
     </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="fleet-cta reveal">
+    <h2>Can't Decide?</h2>
+    <p>Tell us about your trip and we'll recommend the perfect vehicle. Our experts know every route in Rajasthan.</p>
+    <a href="index.html#book" class="btn btn-secondary">Get a Custom Quote</a>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer reveal">
-    <!-- Same Footer as Index -->
     <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="nav-logo" style="color:var(--c-background);">Yashmee<span
+              style="color:var(--c-accent);">Tours</span></a>
+          <p style="margin-top: 15px; color: rgba(255,255,255,0.7);">Your premium travel partner in the magnificent
+            Thar Desert and across Rajasthan.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="fleet.html">Our Fleet</a></li>
+            <li><a href="packages.html">Tour Packages</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Info</h4>
+          <ul class="footer-links" style="color: rgba(255,255,255,0.8);">
+            <li style="margin-bottom: 10px;">📞 +91 77280 57171</li>
+            <li style="margin-bottom: 10px;">📧 yashmeetours@gmail.com</li>
+            <li>📍 Baba Bawdi, Near Indira Colony, Jaisalmer - 345001</li>
+          </ul>
+        </div>
+      </div>
       <div class="footer-bottom">
         <p>&copy; 2026 YashmeeTours. All Rights Reserved.</p>
       </div>
     </div>
   </footer>
 
+  <!-- FLOATING ACTIONS -->
+  <div class="floating-actions">
+    <a href="tel:+917728057171" class="fab fab-call" title="Call Us">📞</a>
+    <a href="https://wa.me/917728057171?text=Hello%20YashmeeTours!%20I%20am%20looking%20for%20a%20taxi." target="_blank"
+      class="fab fab-whatsapp" title="WhatsApp Us">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a5.8 5.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.015-1.04 2.476 1.065 2.872 1.213 3.071c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+      </svg>
+    </a>
+  </div>
+
   <script src="js/main.js"></script>
+  <script>
+    // Fleet Category Filter
+    (function () {
+      var filterBtns = document.querySelectorAll('.filter-btn');
+      var cards = document.querySelectorAll('.car-card');
+
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          // Update active button
+          filterBtns.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+
+          var filter = btn.getAttribute('data-filter');
+
+          cards.forEach(function (card) {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+              card.style.display = '';
+              // Re-trigger animation
+              card.classList.remove('revealed');
+              setTimeout(function () {
+                card.classList.add('revealed');
+              }, 50);
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    })();
+  </script>
 </body>
 
 </html>
