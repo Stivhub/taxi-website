@@ -194,10 +194,32 @@
       padding: 20px;
     }
 
-    .car-price {
-      color: var(--c-accent);
-      font-weight: 700;
-      font-size: 1.2rem;
+    .car-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 14px;
+    }
+
+    .car-feature-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(92, 61, 46, 0.08);
+      color: var(--c-primary);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(92, 61, 46, 0.15);
+      letter-spacing: 0.3px;
+    }
+
+    .car-desc {
+      color: var(--c-text-body);
+      font-size: 0.93rem;
+      line-height: 1.55;
+      margin-bottom: 18px;
     }
 
     /* FEATURES/WHY US */
@@ -499,7 +521,7 @@
     <div class="container">
       <div class="topbar-left">
         <a href="tel:+917728057171">📞 +91 77280 57171</a>
-        <a href="mailto:yashmeetours@gmail.com">✉️ yashmeetours@gmail.com</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yashmeetours@gmail.com&su=Booking%20Inquiry&body=Hello%2C%20I%20want%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener noreferrer">✉️ yashmeetours@gmail.com</a>
       </div>
       <div class="topbar-right">
         <a href="https://instagram.com/yashmee_tours" target="_blank" title="Instagram">📷 Instagram</a>
@@ -545,7 +567,8 @@
   <section class="booking-widget" id="taxi-booking">
     <div class="container">
       <div class="booking-card reveal">
-        <h3 class="mb-2" style="font-family: var(--font-heading); color: var(--c-primary); text-align: center;" id="booking-heading">Book
+        <h3 class="mb-2" style="font-family: var(--font-heading); color: var(--c-primary); text-align: center;"
+          id="booking-heading">Book
           Your Ride</h3>
 
         <form id="taxi-booking-form">
@@ -645,8 +668,7 @@
       <div class="places-grid">
 
         <!-- 1. Jaisalmer Fort -->
-        <div class="place-card reveal reveal-stagger-1"
-          onclick="window.location.href='contact.html#contact'">
+        <div class="place-card reveal reveal-stagger-1" onclick="window.location.href='contact.html#contact'">
           <div class="place-card-img">
             <span class="place-card-badge">Heritage</span>
             <img src="./assets/images/jaisalmer-fort.jpg" alt="Jaisalmer Fort - Sonar Quila" loading="lazy">
@@ -660,8 +682,7 @@
         </div>
 
         <!-- 2. Sam Sand Dunes -->
-        <div class="place-card reveal reveal-stagger-2"
-          onclick="window.location.href='contact.html#contact'">
+        <div class="place-card reveal reveal-stagger-2" onclick="window.location.href='contact.html#contact'">
           <div class="place-card-img">
             <span class="place-card-badge">Desert</span>
             <img src="./assets/images/sam-sand-dunes.png" alt="Sam Sand Dunes at sunset" loading="lazy">
@@ -675,8 +696,7 @@
         </div>
 
         <!-- 3. Patwon Ki Haveli -->
-        <div class="place-card reveal reveal-stagger-3"
-          onclick="window.location.href='contact.html#contact'">
+        <div class="place-card reveal reveal-stagger-3" onclick="window.location.href='contact.html#contact'">
           <div class="place-card-img">
             <span class="place-card-badge">Architecture</span>
             <img src="./assets/images/patwon-ki-haveli.png" alt="Patwon Ki Haveli intricate facade" loading="lazy">
@@ -690,8 +710,7 @@
         </div>
 
         <!-- 4. Gadisar Lake -->
-        <div class="place-card reveal reveal-stagger-1"
-          onclick="window.location.href='contact.html#contact'">
+        <div class="place-card reveal reveal-stagger-1" onclick="window.location.href='contact.html#contact'">
           <div class="place-card-img">
             <span class="place-card-badge">Nature</span>
             <img src="./assets/images/gadisar-lake.png" alt="Gadisar Lake with temples" loading="lazy">
@@ -705,8 +724,7 @@
         </div>
 
         <!-- 5. Kuldhara Village -->
-        <div class="place-card reveal reveal-stagger-2"
-          onclick="window.location.href='contact.html#contact'">
+        <div class="place-card reveal reveal-stagger-2" onclick="window.location.href='contact.html#contact'">
           <div class="place-card-img">
             <span class="place-card-badge">Mystery</span>
             <img src="./assets/images/kuldhara-village.png" alt="Kuldhara abandoned village ruins" loading="lazy">
@@ -720,8 +738,7 @@
         </div>
 
         <!-- 6. Bada Bagh -->
-        <div class="place-card reveal reveal-stagger-3"
-          onclick="window.location.href='contact.html#contact'">
+        <div class="place-card reveal reveal-stagger-3" onclick="window.location.href='contact.html#contact'">
           <div class="place-card-img">
             <span class="place-card-badge">Royal</span>
             <img src="./assets/images/bada-bagh.png" alt="Bada Bagh royal cenotaphs at sunset" loading="lazy">
@@ -730,6 +747,51 @@
             <h3>Bada Bagh</h3>
             <p>A garden of royal cenotaphs honoring Rajput rulers, framed against breathtaking desert sunsets. A
               photographer's dream destination.</p>
+            <a href="contact.html#contact" class="place-card-link">Book Now</a>
+          </div>
+        </div>
+
+        <!-- 7. Tanot Mata Temple -->
+        <div class="place-card reveal reveal-stagger-1" onclick="window.location.href='contact.html#contact'">
+          <div class="place-card-img">
+            <span class="place-card-badge">Spiritual</span>
+            <img src="./assets/images/tanot-mata-temple.png" alt="Tanot Mata Temple exterior near India-Pakistan border"
+              loading="lazy">
+          </div>
+          <div class="place-card-body">
+            <h3>Tanot Mata Temple</h3>
+            <p>A sacred temple near the India-Pakistan border, known for its history during the 1965 war and strong
+              spiritual significance.</p>
+            <a href="contact.html#contact" class="place-card-link">Book Now</a>
+          </div>
+        </div>
+
+        <!-- 8. Longewala Border -->
+        <div class="place-card reveal reveal-stagger-2" onclick="window.location.href='contact.html#contact'">
+          <div class="place-card-img">
+            <span class="place-card-badge">Historic</span>
+            <img src="./assets/images/longewala-border.png"
+              alt="Longewala war memorial with military tanks in Rajasthan desert" loading="lazy">
+          </div>
+          <div class="place-card-body">
+            <h3>Longewala Border</h3>
+            <p>Historic battlefield of the 1971 war, now a popular patriotic tourist site with tanks and army exhibits.
+            </p>
+            <a href="contact.html#contact" class="place-card-link">Book Now</a>
+          </div>
+        </div>
+
+        <!-- 9. Lodurva (Lodhruva) -->
+        <div class="place-card reveal reveal-stagger-3" onclick="window.location.href='contact.html#contact'">
+          <div class="place-card-img">
+            <span class="place-card-badge">Jain Heritage</span>
+            <img src="./assets/images/lodurva-jain-temple.png"
+              alt="Lodurva Jain Temple with ornate sandstone carvings near Jaisalmer" loading="lazy">
+          </div>
+          <div class="place-card-body">
+            <h3>Lodurva (Lodhruva)</h3>
+            <p>An ancient Jain pilgrimage site known for its beautifully carved temples and historic significance,
+              located just outside Jaisalmer.</p>
             <a href="contact.html#contact" class="place-card-link">Book Now</a>
           </div>
         </div>
@@ -897,8 +959,12 @@
           </div>
           <div class="car-card-content">
             <h3>Toyota Innova Crysta</h3>
-            <p class="car-price">₹18 / km</p>
-            <p style="margin: 10px 0; color: #666;">Perfect for family trips. AC, comfortable seating for 6+1.</p>
+            <div class="car-features">
+              <span class="car-feature-tag">❄️ AC</span>
+              <span class="car-feature-tag">🪑 6+1 Seats</span>
+              <span class="car-feature-tag">🧳 Large Boot</span>
+            </div>
+            <p class="car-desc">Perfect for family trips and group sightseeing across Rajasthan.</p>
             <a href="fleet.html" class="btn btn-secondary">View Details</a>
           </div>
         </div>
@@ -911,8 +977,12 @@
           </div>
           <div class="car-card-content">
             <h3>Swift Dzire</h3>
-            <p class="car-price">₹11 / km</p>
-            <p style="margin: 10px 0; color: #666;">Ideal for couples and small families. AC, 4+1 seating.</p>
+            <div class="car-features">
+              <span class="car-feature-tag">❄️ AC</span>
+              <span class="car-feature-tag">🪑 4+1 Seats</span>
+              <span class="car-feature-tag">🧳 Medium Boot</span>
+            </div>
+            <p class="car-desc">Ideal for couples and solo travellers exploring the Golden City.</p>
             <a href="fleet.html" class="btn btn-secondary">View Details</a>
           </div>
         </div>
@@ -925,8 +995,12 @@
           </div>
           <div class="car-card-content">
             <h3>Toyota Fortuner</h3>
-            <p class="car-price">₹25 / km</p>
-            <p style="margin: 10px 0; color: #666;">Ultimate luxury SUV for VIP travel and desert tough roads.</p>
+            <div class="car-features">
+              <span class="car-feature-tag">❄️ AC</span>
+              <span class="car-feature-tag">🪑 6+1 Seats</span>
+              <span class="car-feature-tag">🧳 XL Boot</span>
+            </div>
+            <p class="car-desc">Ultimate luxury SUV for VIP travel and rugged desert roads.</p>
             <a href="fleet.html" class="btn btn-secondary">View Details</a>
           </div>
         </div>
@@ -1002,7 +1076,7 @@
           <h4>Contact Info</h4>
           <ul class="footer-links" style="color: rgba(255,255,255,0.8);">
             <li style="margin-bottom: 10px;">📞 +91 77280 57171</li>
-            <li style="margin-bottom: 10px;">📧 yashmeetours@gmail.com</li>
+            <li style="margin-bottom: 10px;">📧 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yashmeetours@gmail.com&su=Booking%20Inquiry&body=Hello%2C%20I%20want%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">yashmeetours@gmail.com</a></li>
             <li>📍 Baba Bawdi, Near Indira Colony, Jaisalmer - 345001</li>
           </ul>
         </div>

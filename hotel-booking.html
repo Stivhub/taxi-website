@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -13,24 +13,256 @@
   <link rel="stylesheet" href="css/animations.css">
 
   <style>
-    .page-header {
-      padding-top: 150px;
-      padding-bottom: 60px;
-      background: linear-gradient(135deg, var(--c-primary), var(--c-secondary));
-      color: var(--c-background);
+    /* ===== HOTEL CAROUSEL ===== */
+    .hotel-carousel {
+      position: relative;
+      width: 100%;
+      height: 75vh;
+      min-height: 480px;
+      max-height: 800px;
+      overflow: hidden;
+      background: #1a0f08;
+      margin-top: 80px; /* offset for fixed navbar */
+    }
+
+    .carousel-slides {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: opacity;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Cinematic gradient overlay */
+    .carousel-slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.12) 0%,
+        rgba(0, 0, 0, 0.25) 40%,
+        rgba(0, 0, 0, 0.52) 80%,
+        rgba(0, 0, 0, 0.70) 100%
+      );
+      z-index: 1;
+    }
+
+    /* Overlay text */
+    .carousel-overlay-text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      padding: 48px 40px 80px;
       text-align: center;
     }
 
-    .page-header h1 {
-      color: var(--c-background);
-      font-size: 3rem;
-      margin-bottom: 15px;
+    .carousel-tagline {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 4vw, 3rem);
+      color: #fff;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
     }
 
-    /* QUICK BOOKING WIDGET */
+    .carousel-tagline span {
+      color: var(--c-accent);
+    }
+
+    .carousel-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.82);
+      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* Slide label badge */
+    .slide-label {
+      position: absolute;
+      top: 28px;
+      left: 32px;
+      z-index: 10;
+      background: rgba(92, 61, 46, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: var(--c-accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      padding: 7px 16px;
+      border-radius: 50px;
+      border: 1px solid rgba(224, 169, 109, 0.3);
+    }
+
+    /* Arrow Navigation */
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 20;
+      background: rgba(255,255,255,0.13);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease, transform 0.3s ease;
+      line-height: 1;
+    }
+
+    .carousel-arrow:hover {
+      background: rgba(224, 169, 109, 0.35);
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .carousel-arrow-prev { left: 24px; }
+    .carousel-arrow-next { right: 24px; }
+
+    /* Dot Navigation */
+    .carousel-dots-bar {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+      padding: 0;
+    }
+
+    .carousel-dot.active {
+      background: var(--c-accent);
+      transform: scale(1.35);
+    }
+
+    /* Progress bar */
+    .carousel-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: var(--c-accent);
+      z-index: 20;
+      width: 0%;
+      transition: width linear;
+    }
+
+    /* ===== HOTEL BOOKING SECTION ===== */
     .hotel-booking-section {
       padding: var(--section-padding);
-      background-color: var(--c-background);
+      background: linear-gradient(180deg, #EDD9C2 0%, var(--c-background) 100%);
+    }
+
+    .hotel-booking-section .booking-card {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* ===== FORM TEXTAREA ===== */
+    .form-control-textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid rgba(139, 94, 60, 0.2);
+      border-radius: var(--radius-sm);
+      background: white;
+      font-family: inherit;
+      color: var(--c-text-dark);
+      transition: var(--transition-smooth);
+      font-size: 1rem;
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-control-textarea:focus {
+      outline: none;
+      border-color: var(--c-secondary);
+      box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.1);
+    }
+
+    /* Dynamic form field groups */
+    .form-fields-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      align-items: end;
+    }
+
+    .form-group-full {
+      grid-column: 1 / -1;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hotel-carousel {
+        height: 55vw;
+        min-height: 300px;
+      }
+
+      .carousel-overlay-text {
+        padding: 24px 20px 60px;
+      }
+
+      .carousel-tagline { font-size: 1.3rem; }
+      .carousel-sub { font-size: 0.88rem; }
+
+      .carousel-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+      }
+
+      .carousel-arrow-prev { left: 12px; }
+      .carousel-arrow-next { right: 12px; }
+      .slide-label { top: 16px; left: 16px; font-size: 0.7rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hotel-carousel {
+        height: 60vw;
+        min-height: 240px;
+      }
+      .carousel-sub { display: none; }
     }
   </style>
 </head>
@@ -42,7 +274,7 @@
     <div class="container">
       <div class="topbar-left">
         <a href="tel:+917728057171">📞 +91 77280 57171</a>
-        <a href="mailto:yashmeetours@gmail.com">✉️ yashmeetours@gmail.com</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yashmeetours@gmail.com&su=Booking%20Inquiry&body=Hello%2C%20I%20want%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener noreferrer">✉️ yashmeetours@gmail.com</a>
       </div>
       <div class="topbar-right">
         <a href="https://instagram.com/yashmee_tours" target="_blank" title="Instagram">📷 Instagram</a>
@@ -71,12 +303,66 @@
     </div>
   </nav>
 
-  <!-- PAGE HEADER -->
-  <section class="page-header delay-100">
-    <div class="container fade-down">
-      <h1>Book Your Stay in Jaisalmer</h1>
-      <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem;">Experience the royal hospitality of Rajasthan</p>
+  <!-- ===== HOTEL IMAGE CAROUSEL ===== -->
+  <section class="hotel-carousel" id="hotel-carousel" aria-label="Hotel and stay gallery">
+
+    <div class="carousel-slides">
+
+      <!-- Slide 1: Heritage Hotel Exterior -->
+      <div class="carousel-slide active" id="hslide-1" role="img" aria-label="Heritage Hotel Exterior">
+        <span class="slide-label">Heritage Stays</span>
+        <img src="./assets/images/hotel-carousel-exterior.png"
+             alt="Luxury heritage hotel exterior in Jaisalmer, golden sandstone architecture"
+             loading="eager">
+      </div>
+
+      <!-- Slide 2: Luxury Room Interior -->
+      <div class="carousel-slide" id="hslide-2" role="img" aria-label="Luxury Room Interior">
+        <span class="slide-label">Luxury Rooms</span>
+        <img src="./assets/images/hotel-carousel-room.png"
+             alt="Opulent Rajasthani hotel room with ornate decor and warm lighting"
+             loading="lazy">
+      </div>
+
+      <!-- Slide 3: Rooftop Pool -->
+      <div class="carousel-slide" id="hslide-3" role="img" aria-label="Rooftop pool with fort view">
+        <span class="slide-label">Rooftop & Pool</span>
+        <img src="./assets/images/hotel-carousel-rooftop.png"
+             alt="Rooftop infinity pool overlooking Jaisalmer Fort at golden hour"
+             loading="lazy">
+      </div>
+
+      <!-- Slide 4: Haveli Courtyard -->
+      <div class="carousel-slide" id="hslide-4" role="img" aria-label="Haveli courtyard">
+        <span class="slide-label">Haveli Courtyards</span>
+        <img src="./assets/images/hotel-carousel-courtyard.png"
+             alt="Ornate sandstone haveli courtyard with lanterns and marigold decorations"
+             loading="lazy">
+      </div>
+
     </div>
+
+    <!-- Overlay text -->
+    <div class="carousel-overlay-text">
+      <h2 class="carousel-tagline">Find Your <span>Perfect Stay</span> in Jaisalmer</h2>
+      <p class="carousel-sub">Heritage havelis · Luxury rooms · Rooftop views · Royal hospitality</p>
+    </div>
+
+    <!-- Arrow controls -->
+    <button class="carousel-arrow carousel-arrow-prev" id="hcarousel-prev" aria-label="Previous slide">&#8249;</button>
+    <button class="carousel-arrow carousel-arrow-next" id="hcarousel-next" aria-label="Next slide">&#8250;</button>
+
+    <!-- Dot navigation -->
+    <div class="carousel-dots-bar" id="hcarousel-dots" role="tablist" aria-label="Slide navigation">
+      <button class="carousel-dot active" data-index="0" aria-label="Slide 1" aria-selected="true" role="tab"></button>
+      <button class="carousel-dot" data-index="1" aria-label="Slide 2" aria-selected="false" role="tab"></button>
+      <button class="carousel-dot" data-index="2" aria-label="Slide 3" aria-selected="false" role="tab"></button>
+      <button class="carousel-dot" data-index="3" aria-label="Slide 4" aria-selected="false" role="tab"></button>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="carousel-progress" id="hcarousel-progress"></div>
+
   </section>
 
   <!-- HOTEL BOOKING WIDGET -->
@@ -157,6 +443,98 @@
   </footer>
 
   <script src="js/main.js"></script>
+
+  <!-- ===== CAROUSEL SCRIPT ===== -->
+  <script>
+    (function () {
+      const SLIDE_COUNT = 4;
+      const AUTO_INTERVAL = 3800;
+
+      let currentIndex = 0;
+      let autoTimer = null;
+      let isHovered = false;
+
+      const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+      const dots   = Array.from(document.querySelectorAll('.carousel-dot'));
+      const progressBar = document.getElementById('hcarousel-progress');
+      const prevBtn = document.getElementById('hcarousel-prev');
+      const nextBtn = document.getElementById('hcarousel-next');
+      const carousel = document.getElementById('hotel-carousel');
+
+      function goTo(index) {
+        index = ((index % SLIDE_COUNT) + SLIDE_COUNT) % SLIDE_COUNT;
+
+        slides[currentIndex].classList.remove('active');
+        dots[currentIndex].classList.remove('active');
+        dots[currentIndex].setAttribute('aria-selected', 'false');
+
+        currentIndex = index;
+
+        slides[currentIndex].classList.add('active');
+        dots[currentIndex].classList.add('active');
+        dots[currentIndex].setAttribute('aria-selected', 'true');
+
+        resetProgress();
+      }
+
+      function next() { goTo(currentIndex + 1); }
+      function prev() { goTo(currentIndex - 1); }
+
+      function resetProgress() {
+        if (progressBar) {
+          progressBar.style.transition = 'none';
+          progressBar.style.width = '0%';
+          void progressBar.offsetWidth;
+          progressBar.style.transition = `width ${AUTO_INTERVAL}ms linear`;
+          progressBar.style.width = '100%';
+        }
+      }
+
+      function startAuto() {
+        stopAuto();
+        autoTimer = setInterval(() => {
+          if (!isHovered) next();
+        }, AUTO_INTERVAL);
+      }
+
+      function stopAuto() {
+        if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+      }
+
+      prevBtn.addEventListener('click', () => { prev(); startAuto(); });
+      nextBtn.addEventListener('click', () => { next(); startAuto(); });
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => { goTo(i); startAuto(); });
+      });
+
+      carousel.addEventListener('mouseenter', () => { isHovered = true; });
+      carousel.addEventListener('mouseleave', () => { isHovered = false; });
+
+      /* Touch / swipe */
+      let touchStartX = 0;
+      carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      carousel.addEventListener('touchend', (e) => {
+        const diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 40) {
+          diff > 0 ? next() : prev();
+          startAuto();
+        }
+      }, { passive: true });
+
+      /* Keyboard */
+      carousel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') { prev(); startAuto(); }
+        if (e.key === 'ArrowRight') { next(); startAuto(); }
+      });
+
+      resetProgress();
+      startAuto();
+    })();
+  </script>
+
 </body>
 
 </html>

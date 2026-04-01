@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -13,24 +13,268 @@
   <link rel="stylesheet" href="css/animations.css">
 
   <style>
-    .page-header {
-      padding-top: 150px;
-      padding-bottom: 60px;
-      background: linear-gradient(135deg, var(--c-primary), var(--c-secondary));
-      color: var(--c-background);
+    /* ===== DESERT CAROUSEL ===== */
+    .desert-carousel {
+      position: relative;
+      width: 100%;
+      height: 75vh;
+      min-height: 480px;
+      max-height: 800px;
+      overflow: hidden;
+      background: #1a0f08;
+      margin-top: 80px; /* offset for fixed navbar */
+    }
+
+    .carousel-slides {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: opacity;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Cinematic gradient overlay */
+    .carousel-slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.15) 0%,
+        rgba(0, 0, 0, 0.28) 40%,
+        rgba(0, 0, 0, 0.55) 80%,
+        rgba(0, 0, 0, 0.72) 100%
+      );
+      z-index: 1;
+    }
+
+    /* Overlay text */
+    .carousel-overlay-text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      padding: 48px 40px 80px;
       text-align: center;
     }
 
-    .page-header h1 {
-      color: var(--c-background);
-      font-size: 3rem;
-      margin-bottom: 15px;
+    .carousel-tagline {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 4vw, 3rem);
+      color: #fff;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
     }
 
-    /* QUICK BOOKING WIDGET */
+    .carousel-tagline span {
+      color: var(--c-accent);
+    }
+
+    .carousel-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.82);
+      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* Slide label badge */
+    .slide-label {
+      position: absolute;
+      top: 28px;
+      left: 32px;
+      z-index: 10;
+      background: rgba(92, 61, 46, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: var(--c-accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      padding: 7px 16px;
+      border-radius: 50px;
+      border: 1px solid rgba(224, 169, 109, 0.3);
+    }
+
+    /* Arrow Navigation */
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 20;
+      background: rgba(255,255,255,0.13);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease, transform 0.3s ease;
+      line-height: 1;
+    }
+
+    .carousel-arrow:hover {
+      background: rgba(224, 169, 109, 0.35);
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .carousel-arrow-prev {
+      left: 24px;
+    }
+
+    .carousel-arrow-next {
+      right: 24px;
+    }
+
+    /* Dot Navigation */
+    .carousel-dots-bar {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+      padding: 0;
+    }
+
+    .carousel-dot.active {
+      background: var(--c-accent);
+      transform: scale(1.35);
+    }
+
+    /* Progress bar */
+    .carousel-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: var(--c-accent);
+      z-index: 20;
+      width: 0%;
+      transition: width linear;
+    }
+
+    /* ===== PAGE BODY ===== */
     .desert-booking-section {
       padding: var(--section-padding);
-      background-color: var(--c-background);
+      background: linear-gradient(180deg, #EDD9C2 0%, var(--c-background) 100%);
+    }
+
+    .desert-booking-section .booking-card {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* ===== FORM TEXTAREA ===== */
+    .form-control-textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid rgba(139, 94, 60, 0.2);
+      border-radius: var(--radius-sm);
+      background: white;
+      font-family: inherit;
+      color: var(--c-text-dark);
+      transition: var(--transition-smooth);
+      font-size: 1rem;
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-control-textarea:focus {
+      outline: none;
+      border-color: var(--c-secondary);
+      box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.1);
+    }
+
+    /* Dynamic form field groups */
+    .form-fields-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      align-items: end;
+    }
+
+    .form-group-full {
+      grid-column: 1 / -1;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .desert-carousel {
+        height: 55vw;
+        min-height: 300px;
+      }
+
+      .carousel-overlay-text {
+        padding: 24px 20px 60px;
+      }
+
+      .carousel-tagline {
+        font-size: 1.3rem;
+      }
+
+      .carousel-sub {
+        font-size: 0.88rem;
+      }
+
+      .carousel-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+      }
+
+      .carousel-arrow-prev { left: 12px; }
+      .carousel-arrow-next { right: 12px; }
+
+      .slide-label { top: 16px; left: 16px; font-size: 0.7rem; }
+    }
+
+    @media (max-width: 480px) {
+      .desert-carousel {
+        height: 60vw;
+        min-height: 240px;
+      }
+
+      .carousel-sub { display: none; }
     }
   </style>
 </head>
@@ -42,7 +286,7 @@
     <div class="container">
       <div class="topbar-left">
         <a href="tel:+917728057171">📞 +91 77280 57171</a>
-        <a href="mailto:yashmeetours@gmail.com">✉️ yashmeetours@gmail.com</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yashmeetours@gmail.com&su=Booking%20Inquiry&body=Hello%2C%20I%20want%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener noreferrer">✉️ yashmeetours@gmail.com</a>
       </div>
       <div class="topbar-right">
         <a href="https://instagram.com/yashmee_tours" target="_blank" title="Instagram">📷 Instagram</a>
@@ -71,12 +315,66 @@
     </div>
   </nav>
 
-  <!-- PAGE HEADER -->
-  <section class="page-header delay-100">
-    <div class="container fade-down">
-      <h1>Book Your Desert Experience</h1>
-      <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem;">Explore the magic of the Thar Desert</p>
+  <!-- ===== DESERT IMAGE CAROUSEL ===== -->
+  <section class="desert-carousel" id="desert-carousel" aria-label="Desert experience gallery">
+
+    <div class="carousel-slides">
+
+      <!-- Slide 1: Sam Sand Dunes -->
+      <div class="carousel-slide active" id="slide-1" role="img" aria-label="Sam Sand Dunes, Jaisalmer">
+        <span class="slide-label">Sam Sand Dunes</span>
+        <img src="./assets/images/carousel-sam-dunes.png"
+             alt="Golden Sam Sand Dunes at sunset, Jaisalmer"
+             loading="eager">
+      </div>
+
+      <!-- Slide 2: Camel Safari -->
+      <div class="carousel-slide" id="slide-2" role="img" aria-label="Camel Safari at sunset">
+        <span class="slide-label">Camel Safari</span>
+        <img src="./assets/images/carousel-camel-safari.png"
+             alt="Camel caravan silhouette at golden sunset in Thar Desert"
+             loading="lazy">
+      </div>
+
+      <!-- Slide 3: Desert Camping -->
+      <div class="carousel-slide" id="slide-3" role="img" aria-label="Desert camping tents">
+        <span class="slide-label">Desert Camping</span>
+        <img src="./assets/images/carousel-desert-camp.png"
+             alt="Luxury desert camping tents lit by lanterns under a starry sky"
+             loading="lazy">
+      </div>
+
+      <!-- Slide 4: Jeep Safari -->
+      <div class="carousel-slide" id="slide-4" role="img" aria-label="Jeep safari adventure">
+        <span class="slide-label">Jeep Safari</span>
+        <img src="./assets/images/carousel-jeep-safari.png"
+             alt="4x4 jeep racing through golden sand dunes at sunset"
+             loading="lazy">
+      </div>
+
     </div>
+
+    <!-- Overlay text -->
+    <div class="carousel-overlay-text">
+      <h2 class="carousel-tagline">Experience the <span>Magic</span> of the Thar Desert</h2>
+      <p class="carousel-sub">Camel safaris · Desert camping · Jeep adventures · Star-gazing nights</p>
+    </div>
+
+    <!-- Arrow controls -->
+    <button class="carousel-arrow carousel-arrow-prev" id="carousel-prev-btn" aria-label="Previous slide">&#8249;</button>
+    <button class="carousel-arrow carousel-arrow-next" id="carousel-next-btn" aria-label="Next slide">&#8250;</button>
+
+    <!-- Dot navigation -->
+    <div class="carousel-dots-bar" id="carousel-dots-bar" role="tablist" aria-label="Slide navigation">
+      <button class="carousel-dot active" data-index="0" aria-label="Slide 1" aria-selected="true" role="tab"></button>
+      <button class="carousel-dot" data-index="1" aria-label="Slide 2" aria-selected="false" role="tab"></button>
+      <button class="carousel-dot" data-index="2" aria-label="Slide 3" aria-selected="false" role="tab"></button>
+      <button class="carousel-dot" data-index="3" aria-label="Slide 4" aria-selected="false" role="tab"></button>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="carousel-progress" id="carousel-progress"></div>
+
   </section>
 
   <!-- DESERT BOOKING WIDGET -->
@@ -134,7 +432,7 @@
           <div class="form-fields-group visible" id="submit-group">
             <div class="form-group form-group-full">
               <button type="submit" id="booking-btn" class="btn btn-primary">
-                Book Desert Safari & Camps
+                Book Desert Safari &amp; Camps
               </button>
               <p id="booking-status"
                 style="text-align:center; margin-top:12px; font-weight:600; color: var(--c-secondary); display:none;">
@@ -157,6 +455,107 @@
   </footer>
 
   <script src="js/main.js"></script>
+
+  <!-- ===== CAROUSEL SCRIPT ===== -->
+  <script>
+    (function () {
+      const SLIDE_COUNT = 4;
+      const AUTO_INTERVAL = 3800; // ms between slides
+      const PROGRESS_DURATION = AUTO_INTERVAL; // synced
+
+      let currentIndex = 0;
+      let autoTimer = null;
+      let progressTimer = null;
+      let isHovered = false;
+
+      const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+      const dots = Array.from(document.querySelectorAll('.carousel-dot'));
+      const progressBar = document.getElementById('carousel-progress');
+      const prevBtn = document.getElementById('carousel-prev-btn');
+      const nextBtn = document.getElementById('carousel-next-btn');
+      const carousel = document.getElementById('desert-carousel');
+
+      function goTo(index) {
+        // wrap around
+        index = ((index % SLIDE_COUNT) + SLIDE_COUNT) % SLIDE_COUNT;
+
+        slides[currentIndex].classList.remove('active');
+        dots[currentIndex].classList.remove('active');
+        dots[currentIndex].setAttribute('aria-selected', 'false');
+
+        currentIndex = index;
+
+        slides[currentIndex].classList.add('active');
+        dots[currentIndex].classList.add('active');
+        dots[currentIndex].setAttribute('aria-selected', 'true');
+
+        resetProgress();
+      }
+
+      function next() { goTo(currentIndex + 1); }
+      function prev() { goTo(currentIndex - 1); }
+
+      // --- Progress bar animation ---
+      function resetProgress() {
+        if (progressBar) {
+          progressBar.style.transition = 'none';
+          progressBar.style.width = '0%';
+          // Force reflow to restart animation
+          void progressBar.offsetWidth;
+          progressBar.style.transition = `width ${PROGRESS_DURATION}ms linear`;
+          progressBar.style.width = '100%';
+        }
+      }
+
+      // --- Auto-slide ---
+      function startAuto() {
+        stopAuto();
+        autoTimer = setInterval(() => {
+          if (!isHovered) next();
+        }, AUTO_INTERVAL);
+      }
+
+      function stopAuto() {
+        if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+      }
+
+      // --- Controls ---
+      prevBtn.addEventListener('click', () => { prev(); startAuto(); });
+      nextBtn.addEventListener('click', () => { next(); startAuto(); });
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => { goTo(i); startAuto(); });
+      });
+
+      // --- Pause on hover (desktop) ---
+      carousel.addEventListener('mouseenter', () => { isHovered = true; });
+      carousel.addEventListener('mouseleave', () => { isHovered = false; });
+
+      // --- Touch / swipe support (mobile) ---
+      let touchStartX = 0;
+      carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      carousel.addEventListener('touchend', (e) => {
+        const diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 40) {
+          diff > 0 ? next() : prev();
+          startAuto();
+        }
+      }, { passive: true });
+
+      // --- Keyboard navigation ---
+      carousel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') { prev(); startAuto(); }
+        if (e.key === 'ArrowRight') { next(); startAuto(); }
+      });
+
+      // --- Init ---
+      resetProgress();
+      startAuto();
+    })();
+  </script>
+
 </body>
 
 </html>

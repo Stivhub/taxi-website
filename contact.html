@@ -82,7 +82,7 @@
     <div class="container">
       <div class="topbar-left">
         <a href="tel:+917728057171">📞 +91 77280 57171</a>
-        <a href="mailto:yashmeetours@gmail.com">✉️ yashmeetours@gmail.com</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yashmeetours@gmail.com&su=Booking%20Inquiry&body=Hello%2C%20I%20want%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener noreferrer">✉️ yashmeetours@gmail.com</a>
       </div>
       <div class="topbar-right">
         <a href="https://instagram.com/yashmee_tours" target="_blank" title="Instagram">📷 Instagram</a>
@@ -147,7 +147,7 @@
         <div class="contact-icon">📧</div>
         <div>
           <h4 style="margin-bottom: 5px; color: var(--c-text-dark);">Email Us</h4>
-          <p style="color: #666;">yashmeetours@gmail.com</p>
+          <p style="color: #666;"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=yashmeetours@gmail.com&su=Booking%20Inquiry&body=Hello%2C%20I%20want%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">yashmeetours@gmail.com</a></p>
         </div>
       </div>
     </div>
@@ -156,20 +156,36 @@
       <div class="glass-card" style="background: white; border-color: #eee;">
         <h3 class="mb-2" style="font-family: var(--font-heading); color: var(--c-text-dark); font-size: 1.8rem;">Send a
           Message</h3>
-        <form id="contact-form">
+
+        <!-- Validation notice -->
+        <div id="contact-validation"
+          style="display:none; background: rgba(200,60,60,0.08); border: 1px solid rgba(200,60,60,0.25);
+                 color: #b94040; border-radius: 8px; padding: 12px 16px; margin-bottom: 18px;
+                 font-size: 0.93rem; font-weight: 600;">
+          ⚠️ Please fill in Name, Phone, and Message before sending.
+        </div>
+
+        <form id="contact-form" novalidate>
           <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" class="form-control" required>
+            <label for="contact-name">Full Name <span style="color:#b94040;">*</span></label>
+            <input type="text" id="contact-name" class="form-control" placeholder="E.g., Rahul Sharma" required>
           </div>
           <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" class="form-control" required>
+            <label for="contact-phone">Phone Number <span style="color:#b94040;">*</span></label>
+            <input type="tel" id="contact-phone" class="form-control" placeholder="E.g., +91 98765 43210" required>
           </div>
           <div class="form-group">
-            <label>Your Message</label>
-            <textarea class="form-control" rows="5" required></textarea>
+            <label for="contact-email">Email Address <span style="color:#999; font-weight:400;">(Optional)</span></label>
+            <input type="email" id="contact-email" class="form-control" placeholder="E.g., rahul@email.com">
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+          <div class="form-group">
+            <label for="contact-message">Your Message <span style="color:#b94040;">*</span></label>
+            <textarea id="contact-message" class="form-control" rows="5"
+              placeholder="Tell us about your travel plans..." required></textarea>
+          </div>
+          <button type="submit" id="contact-submit-btn" class="btn btn-primary" style="width: 100%;">
+            Send Message via WhatsApp
+          </button>
         </form>
       </div>
     </div>
@@ -188,7 +204,6 @@
   <!-- FLOATING ACTIONS -->
   <div class="floating-actions">
     <a href="tel:+917728057171" class="fab fab-call" title="Call Us">📞</a>
-    <!-- Default message predefined -->
     <a href="https://wa.me/917728057171?text=Hello%20YashmeeTours!%20I%20have%20an%20inquiry." target="_blank"
       class="fab fab-whatsapp" title="WhatsApp Us">
       <svg width="30" height="30" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
@@ -199,6 +214,41 @@
   </div>
 
   <script src="js/main.js"></script>
-</body>
+
+  <!-- ===== CONTACT WHATSAPP SCRIPT ===== -->
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name    = document.getElementById('contact-name').value.trim();
+      const phone   = document.getElementById('contact-phone').value.trim();
+      const email   = document.getElementById('contact-email').value.trim();
+      const message = document.getElementById('contact-message').value.trim();
+      const notice  = document.getElementById('contact-validation');
+
+      // Validate required fields
+      if (!name || !phone || !message) {
+        notice.style.display = 'block';
+        // Auto-hide after 4 seconds
+        clearTimeout(notice._timer);
+        notice._timer = setTimeout(() => { notice.style.display = 'none'; }, 4000);
+        return;
+      }
+
+      notice.style.display = 'none';
+
+      // Build clean message text
+      const emailLine = email ? `Email: ${email}\n` : '';
+      const text =
+        `New Contact Inquiry\n\n` +
+        `Name: ${name}\n` +
+        `Phone: ${phone}\n` +
+        `${emailLine}` +
+        `Message: ${message}`;
+
+      const waURL = `https://wa.me/917728057171?text=${encodeURIComponent(text)}`;
+      window.open(waURL, '_blank');
+    });
+  </script></body>
 
 </html>
