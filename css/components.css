@@ -234,53 +234,33 @@
 
 /* ===== COMPACT BOOKING CARD (ALL FORMS) ===== */
 .booking-card {
-  max-width: 450px;
-  margin: 0 auto 3rem; /* Added margin-bottom for breathing room from footer/next section */
-  padding: 1.5rem;
-  background: transparent;
-  border-radius: 16px;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
   position: relative;
-  overflow: hidden;
   z-index: 2;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 /* Clean Form Card */
 .booking-card form {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
-  padding: 1.25rem 1.25rem 2rem; /* Increased bottom padding (32px) */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* Soft shadow */
+  padding: 0;
 }
 
-/* Blurred desert image behind the card */
-.booking-card::before {
-  content: '';
-  position: absolute;
-  top: -15px; left: -15px; right: -15px; bottom: -15px; /* Prevent blur cut-off edge */
-  z-index: -2;
-  background-image: url('../assets/images/sam-sand-dunes.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: blur(6px);
-  pointer-events: none;
-}
-
-/* User specified overlay */
-.booking-card::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: -1;
-  background: rgba(255, 245, 230, 0.85);
-  pointer-events: none;
+.booking-card h3 {
+  color: white !important;
 }
 
 .booking-card form,
 .booking-card h3,
 .booking-card p {
   position: relative;
-  z-index: 3; /* Keep elements on top of the image and overlay layer */
+  z-index: 3;
 }
 
 /* Tighter field spacing */
@@ -291,9 +271,9 @@
 /* Smaller label font */
 .booking-card label {
   font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--c-primary);
-  margin-bottom: 0.25rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.3rem;
   display: block;
 }
 
