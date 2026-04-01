@@ -80,10 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
       var drop = document.getElementById('drop').value.trim();
       var date = document.getElementById('date').value;
       var time = document.getElementById('time').value;
+      var ampm = document.getElementById('ampm').value;
       var type = document.getElementById('type').value;
       var car = document.getElementById('car').value;
 
-      if (!pickup || !drop || !date || !time || !car) {
+      if (!pickup || !drop || !date || !time || !ampm || !car) {
         status.style.display = 'block';
         status.style.color = '#c0392b';
         status.textContent = 'Please fill in all taxi booking fields.';
@@ -97,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Pickup: ' + pickup + '\n' +
         'Drop: ' + drop + '\n' +
         'Date: ' + date + '\n' +
-        'Pickup Time: ' + time + '\n' +
+        'Pickup Time: ' + time + ' ' + ampm + '\n' +
         'Trip Type: ' + type + '\n' +
         'Car Type: ' + car;
 

@@ -328,6 +328,18 @@
   box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.15);
 }
 
+/* Time Picker Group */
+.time-picker-group {
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 600px) {
+  .time-picker-group {
+    flex-direction: column;
+  }
+}
+
 /* ===== FOOTER ===== */
 .footer {
   background: var(--c-primary);

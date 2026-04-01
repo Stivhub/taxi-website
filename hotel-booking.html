@@ -22,7 +22,8 @@
       max-height: 800px;
       overflow: hidden;
       background: #1a0f08;
-      margin-top: 80px; /* offset for fixed navbar */
+      margin-top: 80px;
+      /* offset for fixed navbar */
     }
 
     .carousel-slides {
@@ -56,13 +57,11 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.12) 0%,
-        rgba(0, 0, 0, 0.25) 40%,
-        rgba(0, 0, 0, 0.52) 80%,
-        rgba(0, 0, 0, 0.70) 100%
-      );
+      background: linear-gradient(to bottom,
+          rgba(0, 0, 0, 0.12) 0%,
+          rgba(0, 0, 0, 0.25) 40%,
+          rgba(0, 0, 0, 0.52) 80%,
+          rgba(0, 0, 0, 0.70) 100%);
       z-index: 1;
     }
 
@@ -81,7 +80,7 @@
       font-family: var(--font-heading);
       font-size: clamp(1.6rem, 4vw, 3rem);
       color: #fff;
-      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
       margin-bottom: 10px;
       letter-spacing: 0.5px;
     }
@@ -92,8 +91,8 @@
 
     .carousel-sub {
       font-size: 1.05rem;
-      color: rgba(255,255,255,0.82);
-      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+      color: rgba(255, 255, 255, 0.82);
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
       max-width: 540px;
       margin: 0 auto;
     }
@@ -123,10 +122,10 @@
       top: 50%;
       transform: translateY(-50%);
       z-index: 20;
-      background: rgba(255,255,255,0.13);
+      background: rgba(255, 255, 255, 0.13);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
-      border: 1px solid rgba(255,255,255,0.25);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       color: #fff;
       width: 50px;
       height: 50px;
@@ -145,8 +144,13 @@
       transform: translateY(-50%) scale(1.08);
     }
 
-    .carousel-arrow-prev { left: 24px; }
-    .carousel-arrow-next { right: 24px; }
+    .carousel-arrow-prev {
+      left: 24px;
+    }
+
+    .carousel-arrow-next {
+      right: 24px;
+    }
 
     /* Dot Navigation */
     .carousel-dots-bar {
@@ -164,7 +168,7 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.4);
+      background: rgba(255, 255, 255, 0.4);
       border: none;
       cursor: pointer;
       transition: background 0.3s ease, transform 0.3s ease;
@@ -199,7 +203,10 @@
     .hotel-booking-section::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background: url('./assets/images/hotel-carousel-exterior.png') center/cover no-repeat;
       z-index: -2;
     }
@@ -267,8 +274,13 @@
         padding: 24px 20px 60px;
       }
 
-      .carousel-tagline { font-size: 1.3rem; }
-      .carousel-sub { font-size: 0.88rem; }
+      .carousel-tagline {
+        font-size: 1.3rem;
+      }
+
+      .carousel-sub {
+        font-size: 0.88rem;
+      }
 
       .carousel-arrow {
         width: 38px;
@@ -276,9 +288,19 @@
         font-size: 1.1rem;
       }
 
-      .carousel-arrow-prev { left: 12px; }
-      .carousel-arrow-next { right: 12px; }
-      .slide-label { top: 16px; left: 16px; font-size: 0.7rem; }
+      .carousel-arrow-prev {
+        left: 12px;
+      }
+
+      .carousel-arrow-next {
+        right: 12px;
+      }
+
+      .slide-label {
+        top: 16px;
+        left: 16px;
+        font-size: 0.7rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -286,7 +308,10 @@
         height: 60vw;
         min-height: 240px;
       }
-      .carousel-sub { display: none; }
+
+      .carousel-sub {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -298,7 +323,8 @@
     <div class="container">
       <div class="topbar-left">
         <a href="tel:+919928454728">📞 +91 99284 54728</a>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yashmeetours@gmail.com&su=Booking%20Inquiry&body=Hello%2C%20I%20want%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener noreferrer">✉️ yashmeetours@gmail.com</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yashmeetours@gmail.com&su=Booking%20Inquiry&body=Hello%2C%20I%20want%20to%20inquire%20about%20your%20services."
+          target="_blank" rel="noopener noreferrer">✉️ yashmeetours@gmail.com</a>
       </div>
       <div class="topbar-right">
         <a href="https://instagram.com/yashmee_tours" target="_blank" title="Instagram">📷 Instagram</a>
@@ -336,32 +362,28 @@
       <div class="carousel-slide active" id="hslide-1" role="img" aria-label="Heritage Hotel Exterior">
         <span class="slide-label">Heritage Stays</span>
         <img src="./assets/images/hotel-carousel-exterior.png"
-             alt="Luxury heritage hotel exterior in Jaisalmer, golden sandstone architecture"
-             loading="eager">
+          alt="Luxury heritage hotel exterior in Jaisalmer, golden sandstone architecture" loading="eager">
       </div>
 
       <!-- Slide 2: Luxury Room Interior -->
       <div class="carousel-slide" id="hslide-2" role="img" aria-label="Luxury Room Interior">
         <span class="slide-label">Luxury Rooms</span>
         <img src="./assets/images/hotel-carousel-room.png"
-             alt="Opulent Rajasthani hotel room with ornate decor and warm lighting"
-             loading="lazy">
+          alt="Opulent Rajasthani hotel room with ornate decor and warm lighting" loading="lazy">
       </div>
 
       <!-- Slide 3: Rooftop Pool -->
       <div class="carousel-slide" id="hslide-3" role="img" aria-label="Rooftop pool with fort view">
         <span class="slide-label">Rooftop & Pool</span>
         <img src="./assets/images/hotel-carousel-rooftop.png"
-             alt="Rooftop infinity pool overlooking Jaisalmer Fort at golden hour"
-             loading="lazy">
+          alt="Rooftop infinity pool overlooking Jaisalmer Fort at golden hour" loading="lazy">
       </div>
 
       <!-- Slide 4: Haveli Courtyard -->
       <div class="carousel-slide" id="hslide-4" role="img" aria-label="Haveli courtyard">
         <span class="slide-label">Haveli Courtyards</span>
         <img src="./assets/images/hotel-carousel-courtyard.png"
-             alt="Ornate sandstone haveli courtyard with lanterns and marigold decorations"
-             loading="lazy">
+          alt="Ornate sandstone haveli courtyard with lanterns and marigold decorations" loading="lazy">
       </div>
 
     </div>
@@ -393,7 +415,8 @@
   <section class="hotel-booking-section" id="hotel-booking">
     <div class="container">
       <div class="booking-card reveal">
-        <h3 class="mb-2" style="font-family: var(--font-heading); color: var(--c-primary); text-align: center;" id="booking-heading">Book
+        <h3 class="mb-2" style="font-family: var(--font-heading); color: var(--c-primary); text-align: center;"
+          id="booking-heading">Book
           Your Stay</h3>
 
         <form id="hotel-booking-form">
@@ -402,7 +425,7 @@
           <div class="form-fields-group visible" id="shared-fields">
             <div class="form-group">
               <label for="name">Your Name</label>
-              <input type="text" id="name" class="form-control" placeholder="E.g., Rahul Sharma" required>
+              <input type="text" id="name" class="form-control" placeholder="E.g., Rajveer Singh" required>
             </div>
             <div class="form-group">
               <label for="phone">Phone Number</label>
@@ -479,7 +502,7 @@
       let isHovered = false;
 
       const slides = Array.from(document.querySelectorAll('.carousel-slide'));
-      const dots   = Array.from(document.querySelectorAll('.carousel-dot'));
+      const dots = Array.from(document.querySelectorAll('.carousel-dot'));
       const progressBar = document.getElementById('hcarousel-progress');
       const prevBtn = document.getElementById('hcarousel-prev');
       const nextBtn = document.getElementById('hcarousel-next');

@@ -604,7 +604,7 @@
           <div class="form-fields-group visible" id="shared-fields">
             <div class="form-group">
               <label for="name">Your Name</label>
-              <input type="text" id="name" class="form-control" placeholder="E.g., Rahul Sharma" required>
+              <input type="text" id="name" class="form-control" placeholder="E.g., Rajveer Singh" required>
             </div>
             <div class="form-group">
               <label for="phone">Phone Number</label>
@@ -627,8 +627,40 @@
               <input type="date" id="date" class="form-control" required>
             </div>
             <div class="form-group">
-              <label for="time">Pickup Time</label>
-              <input type="time" id="time" class="form-control" required>
+              <label>Pickup Time</label>
+              <div class="time-picker-group">
+                <select id="time" class="form-control" required>
+                  <option value="" disabled selected>Time</option>
+                  <option value="12:00">12:00</option>
+                  <option value="12:30">12:30</option>
+                  <option value="01:00">01:00</option>
+                  <option value="01:30">01:30</option>
+                  <option value="02:00">02:00</option>
+                  <option value="02:30">02:30</option>
+                  <option value="03:00">03:00</option>
+                  <option value="03:30">03:30</option>
+                  <option value="04:00">04:00</option>
+                  <option value="04:30">04:30</option>
+                  <option value="05:00">05:00</option>
+                  <option value="05:30">05:30</option>
+                  <option value="06:00">06:00</option>
+                  <option value="06:30">06:30</option>
+                  <option value="07:00">07:00</option>
+                  <option value="07:30">07:30</option>
+                  <option value="08:00">08:00</option>
+                  <option value="08:30">08:30</option>
+                  <option value="09:00">09:00</option>
+                  <option value="09:30">09:30</option>
+                  <option value="10:00">10:00</option>
+                  <option value="10:30">10:30</option>
+                  <option value="11:00">11:00</option>
+                  <option value="11:30">11:30</option>
+                </select>
+                <select id="ampm" class="form-control" required style="flex: 0 0 90px;">
+                  <option value="AM">AM</option>
+                  <option value="PM">PM</option>
+                </select>
+              </div>
             </div>
             <div class="form-group">
               <label for="type">Trip Type</label>
@@ -900,7 +932,7 @@
               <div class="testimonial-header">
                 <div class="testimonial-avatar">RS</div>
                 <div class="testimonial-info">
-                  <h4>Rahul Sharma</h4>
+                  <h4>Rajveer Singh</h4>
                   <span>Delhi</span>
                 </div>
               </div>

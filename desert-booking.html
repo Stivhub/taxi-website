@@ -22,7 +22,8 @@
       max-height: 800px;
       overflow: hidden;
       background: #1a0f08;
-      margin-top: 80px; /* offset for fixed navbar */
+      margin-top: 80px;
+      /* offset for fixed navbar */
     }
 
     .carousel-slides {
@@ -56,13 +57,11 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.15) 0%,
-        rgba(0, 0, 0, 0.28) 40%,
-        rgba(0, 0, 0, 0.55) 80%,
-        rgba(0, 0, 0, 0.72) 100%
-      );
+      background: linear-gradient(to bottom,
+          rgba(0, 0, 0, 0.15) 0%,
+          rgba(0, 0, 0, 0.28) 40%,
+          rgba(0, 0, 0, 0.55) 80%,
+          rgba(0, 0, 0, 0.72) 100%);
       z-index: 1;
     }
 
@@ -81,7 +80,7 @@
       font-family: var(--font-heading);
       font-size: clamp(1.6rem, 4vw, 3rem);
       color: #fff;
-      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
       margin-bottom: 10px;
       letter-spacing: 0.5px;
     }
@@ -92,8 +91,8 @@
 
     .carousel-sub {
       font-size: 1.05rem;
-      color: rgba(255,255,255,0.82);
-      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+      color: rgba(255, 255, 255, 0.82);
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
       max-width: 520px;
       margin: 0 auto;
     }
@@ -123,10 +122,10 @@
       top: 50%;
       transform: translateY(-50%);
       z-index: 20;
-      background: rgba(255,255,255,0.13);
+      background: rgba(255, 255, 255, 0.13);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
-      border: 1px solid rgba(255,255,255,0.25);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       color: #fff;
       width: 50px;
       height: 50px;
@@ -169,7 +168,7 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.4);
+      background: rgba(255, 255, 255, 0.4);
       border: none;
       cursor: pointer;
       transition: background 0.3s ease, transform 0.3s ease;
@@ -204,7 +203,10 @@
     .desert-booking-section::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background: url('./assets/images/sam-sand-dunes.png') center/cover no-repeat;
       z-index: -2;
     }
@@ -286,10 +288,19 @@
         font-size: 1.1rem;
       }
 
-      .carousel-arrow-prev { left: 12px; }
-      .carousel-arrow-next { right: 12px; }
+      .carousel-arrow-prev {
+        left: 12px;
+      }
 
-      .slide-label { top: 16px; left: 16px; font-size: 0.7rem; }
+      .carousel-arrow-next {
+        right: 12px;
+      }
+
+      .slide-label {
+        top: 16px;
+        left: 16px;
+        font-size: 0.7rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -298,7 +309,9 @@
         min-height: 240px;
       }
 
-      .carousel-sub { display: none; }
+      .carousel-sub {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -310,7 +323,8 @@
     <div class="container">
       <div class="topbar-left">
         <a href="tel:+919928454728">📞 +91 99284 54728</a>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yashmeetours@gmail.com&su=Booking%20Inquiry&body=Hello%2C%20I%20want%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener noreferrer">✉️ yashmeetours@gmail.com</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yashmeetours@gmail.com&su=Booking%20Inquiry&body=Hello%2C%20I%20want%20to%20inquire%20about%20your%20services."
+          target="_blank" rel="noopener noreferrer">✉️ yashmeetours@gmail.com</a>
       </div>
       <div class="topbar-right">
         <a href="https://instagram.com/yashmee_tours" target="_blank" title="Instagram">📷 Instagram</a>
@@ -347,33 +361,29 @@
       <!-- Slide 1: Sam Sand Dunes -->
       <div class="carousel-slide active" id="slide-1" role="img" aria-label="Sam Sand Dunes, Jaisalmer">
         <span class="slide-label">Sam Sand Dunes</span>
-        <img src="./assets/images/carousel-sam-dunes.png"
-             alt="Golden Sam Sand Dunes at sunset, Jaisalmer"
-             loading="eager">
+        <img src="./assets/images/carousel-sam-dunes.png" alt="Golden Sam Sand Dunes at sunset, Jaisalmer"
+          loading="eager">
       </div>
 
       <!-- Slide 2: Camel Safari -->
       <div class="carousel-slide" id="slide-2" role="img" aria-label="Camel Safari at sunset">
         <span class="slide-label">Camel Safari</span>
         <img src="./assets/images/carousel-camel-safari.png"
-             alt="Camel caravan silhouette at golden sunset in Thar Desert"
-             loading="lazy">
+          alt="Camel caravan silhouette at golden sunset in Thar Desert" loading="lazy">
       </div>
 
       <!-- Slide 3: Desert Camping -->
       <div class="carousel-slide" id="slide-3" role="img" aria-label="Desert camping tents">
         <span class="slide-label">Desert Camping</span>
         <img src="./assets/images/carousel-desert-camp.png"
-             alt="Luxury desert camping tents lit by lanterns under a starry sky"
-             loading="lazy">
+          alt="Luxury desert camping tents lit by lanterns under a starry sky" loading="lazy">
       </div>
 
       <!-- Slide 4: Jeep Safari -->
       <div class="carousel-slide" id="slide-4" role="img" aria-label="Jeep safari adventure">
         <span class="slide-label">Jeep Safari</span>
-        <img src="./assets/images/carousel-jeep-safari.png"
-             alt="4x4 jeep racing through golden sand dunes at sunset"
-             loading="lazy">
+        <img src="./assets/images/carousel-jeep-safari.png" alt="4x4 jeep racing through golden sand dunes at sunset"
+          loading="lazy">
       </div>
 
     </div>
@@ -385,7 +395,8 @@
     </div>
 
     <!-- Arrow controls -->
-    <button class="carousel-arrow carousel-arrow-prev" id="carousel-prev-btn" aria-label="Previous slide">&#8249;</button>
+    <button class="carousel-arrow carousel-arrow-prev" id="carousel-prev-btn"
+      aria-label="Previous slide">&#8249;</button>
     <button class="carousel-arrow carousel-arrow-next" id="carousel-next-btn" aria-label="Next slide">&#8250;</button>
 
     <!-- Dot navigation -->
@@ -405,7 +416,8 @@
   <section class="desert-booking-section" id="desert-booking">
     <div class="container">
       <div class="booking-card reveal">
-        <h3 class="mb-2" style="font-family: var(--font-heading); color: var(--c-primary); text-align: center;" id="booking-heading">Book
+        <h3 class="mb-2" style="font-family: var(--font-heading); color: var(--c-primary); text-align: center;"
+          id="booking-heading">Book
           Your Desert Experience</h3>
 
         <form id="desert-booking-form">
@@ -414,7 +426,7 @@
           <div class="form-fields-group visible" id="shared-fields">
             <div class="form-group">
               <label for="name">Your Name</label>
-              <input type="text" id="name" class="form-control" placeholder="E.g., Rahul Sharma" required>
+              <input type="text" id="name" class="form-control" placeholder="E.g., Rajveer Singh" required>
             </div>
             <div class="form-group">
               <label for="phone">Phone Number</label>
