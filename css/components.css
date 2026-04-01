@@ -235,7 +235,7 @@
 /* ===== COMPACT BOOKING CARD (ALL FORMS) ===== */
 .booking-card {
   max-width: 450px;
-  margin: 0 auto;
+  margin: 0 auto 3rem; /* Added margin-bottom for breathing room from footer/next section */
   padding: 1.5rem;
   background: transparent;
   border-radius: 16px;
@@ -248,7 +248,7 @@
 .booking-card form {
   background: rgba(255, 255, 255, 0.9);
   border-radius: 12px;
-  padding: 1.25rem;
+  padding: 1.25rem 1.25rem 2rem; /* Increased bottom padding (32px) */
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* Soft shadow */
 }
 
@@ -324,15 +324,20 @@
 }
 
 /* Reduced button size */
+/* Reduced button size for mobile fix */
 .booking-card .btn {
-  height: 44px;
-  font-size: 1rem;
+  height: auto; /* Let padding define height (approx 40px) */
+  font-size: 0.95rem; /* Slightly reduced */
   width: 100%;
-  padding: 0;
+  padding: 12px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 0.3rem;
+  margin-top: 16px; /* Spacing between last field and button */
+  margin-bottom: 20px; /* User requested 20px */
+  white-space: nowrap; /* Prevent weird line breaks as requested */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .booking-card .form-control:focus,
