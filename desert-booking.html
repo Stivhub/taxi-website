@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Premium hotel booking in Rajasthan. Explore Jaisalmer and beyond with our top-tier partnered hotels.">
-  <title>Hotel Booking | YashmeeTours</title>
+    content="Book your premium desert experience in Jaisalmer. Enjoy desert safaris, camping under the stars, and camel rides.">
+  <title>Desert Booking | YashmeeTours</title>
 
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/components.css">
@@ -28,7 +28,7 @@
     }
 
     /* QUICK BOOKING WIDGET */
-    .hotel-booking-section {
+    .desert-booking-section {
       padding: var(--section-padding);
       background-color: var(--c-background);
     }
@@ -60,8 +60,8 @@
         <a href="services.html">Services</a>
         <a href="fleet.html">Our Fleet</a>
         <a href="packages.html">Tour Packages</a>
-        <a href="hotel-booking.html" class="active">Hotel Booking</a>
-        <a href="desert-booking.html">Desert Booking</a>
+        <a href="hotel-booking.html">Hotel Booking</a>
+        <a href="desert-booking.html" class="active">Desert Booking</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact</a>
       </div>
@@ -74,19 +74,19 @@
   <!-- PAGE HEADER -->
   <section class="page-header delay-100">
     <div class="container fade-down">
-      <h1>Book Your Stay in Jaisalmer</h1>
-      <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem;">Experience the royal hospitality of Rajasthan</p>
+      <h1>Book Your Desert Experience</h1>
+      <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem;">Explore the magic of the Thar Desert</p>
     </div>
   </section>
 
-  <!-- HOTEL BOOKING WIDGET -->
-  <section class="hotel-booking-section" id="hotel-booking">
+  <!-- DESERT BOOKING WIDGET -->
+  <section class="desert-booking-section" id="desert-booking">
     <div class="container">
       <div class="booking-card reveal">
         <h3 class="mb-2" style="font-family: var(--font-heading); color: var(--c-primary); text-align: center;" id="booking-heading">Book
-          Your Stay</h3>
+          Your Desert Experience</h3>
 
-        <form id="hotel-booking-form">
+        <form id="desert-booking-form">
 
           <!-- ===== SHARED FIELDS ===== -->
           <div class="form-fields-group visible" id="shared-fields">
@@ -100,33 +100,33 @@
             </div>
           </div>
 
-          <!-- ===== HOTEL FIELDS ===== -->
-          <div class="form-fields-group visible" id="hotel-fields" style="display: grid; opacity: 1; transform: none;">
+          <!-- ===== DESERT FIELDS ===== -->
+          <div class="form-fields-group visible" id="desert-fields" style="display: grid; opacity: 1; transform: none;">
             <div class="form-group">
-              <label for="checkin">Check-in Date</label>
-              <input type="date" id="checkin" class="form-control" required>
+              <label for="date">Date</label>
+              <input type="date" id="date" class="form-control" required>
             </div>
             <div class="form-group">
-              <label for="checkout">Check-out Date</label>
-              <input type="date" id="checkout" class="form-control" required>
+              <label for="people">Number of People</label>
+              <input type="number" id="people" class="form-control" placeholder="E.g., 2" min="1" max="50" required>
             </div>
-            <div class="form-group">
-              <label for="guests">Number of Guests</label>
-              <input type="number" id="guests" class="form-control" placeholder="E.g., 2" min="1" max="50" required>
-            </div>
-            <div class="form-group">
-              <label for="hotel-type">Hotel Type</label>
-              <select id="hotel-type" class="form-control" required>
-                <option value="" disabled selected>Select Hotel Type</option>
-                <option>Budget</option>
-                <option>Deluxe</option>
-                <option>Luxury</option>
+            <div class="form-group form-group-full" style="grid-column: 1 / -1; width: 100%;">
+              <label for="service">Select Service</label>
+              <select id="service" class="form-control" required>
+                <option value="" disabled selected>Select Service</option>
+                <option>Desert Safari</option>
+                <option>Desert Camping</option>
+                <option>Both</option>
               </select>
             </div>
             <div class="form-group form-group-full" style="grid-column: 1 / -1; width: 100%;">
-              <label for="special-requests">Special Requests (Optional)</label>
-              <textarea id="special-requests" class="form-control-textarea"
-                placeholder="E.g., Ground floor room, extra bed, desert view..." rows="3"></textarea>
+              <label for="pickup">Pickup Location (Optional)</label>
+              <input type="text" id="pickup" class="form-control" placeholder="E.g., Jaisalmer Station or Hotel Name">
+            </div>
+            <div class="form-group form-group-full" style="grid-column: 1 / -1; width: 100%;">
+              <label for="requests">Special Requests (Optional)</label>
+              <textarea id="requests" class="form-control-textarea"
+                placeholder="E.g., Dietary requirements, extra bedding..." rows="3"></textarea>
             </div>
           </div>
 
@@ -134,7 +134,7 @@
           <div class="form-fields-group visible" id="submit-group">
             <div class="form-group form-group-full">
               <button type="submit" id="booking-btn" class="btn btn-primary">
-                Book Hotel via WhatsApp
+                Book Desert Experience via WhatsApp
               </button>
               <p id="booking-status"
                 style="text-align:center; margin-top:12px; font-weight:600; color: var(--c-secondary); display:none;">

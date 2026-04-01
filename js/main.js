@@ -158,6 +158,62 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  var desertForm = document.getElementById('desert-booking-form');
+  if (desertForm) {
+    desertForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      var btn = document.getElementById('booking-btn');
+      var status = document.getElementById('booking-status');
+      var originalText = btn.textContent;
+
+      var name = document.getElementById('name').value.trim();
+      var phone = document.getElementById('phone').value.trim();
+
+      if (!name || !phone) {
+        status.style.display = 'block';
+        status.style.color = '#c0392b';
+        status.textContent = 'Please fill in your name and phone number.';
+        setTimeout(function() { status.style.display = 'none'; }, 3000);
+        return;
+      }
+
+      var waNumber = '917728057171';
+      var date = document.getElementById('date').value;
+      var people = document.getElementById('people').value;
+      var service = document.getElementById('service').value;
+      var pickup = document.getElementById('pickup').value.trim();
+      var requests = document.getElementById('requests').value.trim();
+
+      if (!date || !people || !service) {
+        status.style.display = 'block';
+        status.style.color = '#c0392b';
+        status.textContent = 'Please fill in all desert booking fields.';
+        setTimeout(function() { status.style.display = 'none'; }, 3000);
+        return;
+      }
+
+      var message = 'New Desert Booking Request\n\n' +
+        'Name: ' + name + '\n' +
+        'Phone: ' + phone + '\n' +
+        'Date: ' + date + '\n' +
+        'People: ' + people + '\n' +
+        'Service: ' + service;
+
+      if (pickup) {
+        message += '\nPickup: ' + pickup;
+      }
+
+      if (requests) {
+        message += '\nRequests: ' + requests;
+      }
+
+      var waLink = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(message);
+
+      processBooking(btn, status, originalText, waLink, desertForm);
+    });
+  }
+
   function processBooking(btn, status, originalText, waLink, formNode) {
     btn.textContent = 'Processing...';
     btn.style.opacity = '0.7';

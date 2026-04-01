@@ -232,60 +232,78 @@
   height: 54px;
 }
 
-/* ===== COMPACT BOOKING CARD (TAXI & HOTEL) ===== */
+/* ===== COMPACT BOOKING CARD (ALL FORMS) ===== */
 .booking-card {
-  max-width: 500px;
+  max-width: 450px;
   margin: 0 auto;
-  padding: 1.8rem;
-  background: linear-gradient(135deg, #FFFCF7, #F5E6D3); /* Light beige gradient */
-  border: 1px solid rgba(139, 94, 60, 0.15);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-soft);
+  padding: 1.5rem;
+  background: transparent;
+  border-radius: 16px;
   position: relative;
   overflow: hidden;
   z-index: 2;
 }
 
-/* Subtle desert dunes background motif */
+/* Clean Form Card */
+.booking-card form {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* Soft shadow */
+}
+
+/* Blurred desert image behind the card */
 .booking-card::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 0;
+  top: -15px; left: -15px; right: -15px; bottom: -15px; /* Prevent blur cut-off edge */
+  z-index: -2;
+  background-image: url('../assets/images/sam-sand-dunes.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(6px);
   pointer-events: none;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,50 Q25,20 50,50 T100,50 V100 H0 Z' fill='%235C3D2E' /%3E%3Cpath d='M0,80 Q25,60 50,80 T100,80 V100 H0 Z' fill='%238B5E3C' /%3E%3C/svg%3E");
-  background-size: 150px 150px;
-  background-position: bottom;
-  background-repeat: repeat-x;
 }
 
-.booking-card form {
+/* User specified overlay */
+.booking-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -1;
+  background: rgba(255, 245, 230, 0.85);
+  pointer-events: none;
+}
+
+.booking-card form,
+.booking-card h3,
+.booking-card p {
   position: relative;
-  z-index: 1; /* Keep above motif */
+  z-index: 3; /* Keep elements on top of the image and overlay layer */
 }
 
 /* Tighter field spacing */
 .booking-card .form-group {
-  margin-bottom: 1.1rem; 
+  margin-bottom: 0.95rem; 
 }
 
 /* Smaller label font */
 .booking-card label {
-  font-size: 0.88rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 700;
   color: var(--c-primary);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
   display: block;
 }
 
 /* Reduced input sizes */
 .booking-card .form-control {
   width: 100%;
-  padding: 0.8rem 1rem;
-  border: 1px solid rgba(139, 94, 60, 0.2);
+  padding: 0.7rem 0.9rem;
+  border: 1px solid rgba(139, 94, 60, 0.25);
   border-radius: var(--radius-sm);
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   font-family: inherit;
   color: var(--c-text-dark);
   font-size: 0.95rem;
@@ -293,12 +311,12 @@
 }
 
 .booking-card .form-control-textarea {
-  min-height: 70px;
-  padding: 0.8rem 1rem;
+  min-height: 65px;
+  padding: 0.7rem 0.9rem;
   width: 100%;
-  border: 1px solid rgba(139, 94, 60, 0.2);
+  border: 1px solid rgba(139, 94, 60, 0.25);
   border-radius: var(--radius-sm);
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   font-family: inherit;
   color: var(--c-text-dark);
   font-size: 0.95rem;
@@ -307,16 +325,22 @@
 
 /* Reduced button size */
 .booking-card .btn {
-  height: 48px;
-  font-size: 1.05rem;
+  height: 44px;
+  font-size: 1rem;
   width: 100%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.3rem;
 }
 
 .booking-card .form-control:focus,
 .booking-card .form-control-textarea:focus {
   outline: none;
   border-color: var(--c-secondary);
-  box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.1);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.15);
 }
 
 /* ===== FOOTER ===== */
