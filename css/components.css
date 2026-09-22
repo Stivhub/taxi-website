@@ -264,58 +264,110 @@
 }
 
 /* Tighter field spacing */
+.booking-card .form-fields-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 1.15rem;
+  align-items: start;
+}
+
+.booking-card .form-fields-group > * {
+  min-width: 0;
+}
+
+/* Prevent double-spacing inside grid */
+.booking-card .form-fields-group .form-group {
+  margin-bottom: 0;
+}
+
+.booking-card .form-fields-group + .form-fields-group {
+  margin-top: 0.75rem;
+}
+
 .booking-card .form-group {
-  margin-bottom: 0.95rem; 
+  margin-bottom: 0.75rem; 
+  min-width: 0;
 }
 
 /* Smaller label font */
 .booking-card label {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: white;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.22rem;
   display: block;
 }
 
-/* Reduced input sizes */
+/* Compact input sizes */
 .booking-card .form-control {
   width: 100%;
-  padding: 0.7rem 0.9rem;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 0.48rem 0.75rem;
+  height: 40px;
+  line-height: 1.3;
   border: 1px solid rgba(139, 94, 60, 0.25);
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.9);
   font-family: inherit;
   color: var(--c-text-dark);
-  font-size: 0.95rem;
+  font-size: 1rem; /* 1rem prevents auto-zoom on iOS */
   transition: var(--transition-smooth);
 }
 
-.booking-card .form-control-textarea {
-  min-height: 65px;
-  padding: 0.7rem 0.9rem;
+.booking-card select.form-control {
+  height: 40px;
+  padding: 0.48rem 0.75rem;
+}
+
+/* Apple iOS/iPadOS Safari date input fix to prevent column overflow/overlapping */
+.booking-card input[type="date"],
+input[type="date"].form-control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  display: block;
+  height: 40px;
+  padding: 0.48rem 0.75rem;
+}
+
+.booking-card input[type="date"]::-webkit-date-and-time-value {
+  text-align: left;
+  min-height: 1.2em;
+}
+
+.booking-card .form-control-textarea {
+  min-height: 58px;
+  padding: 0.48rem 0.75rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   border: 1px solid rgba(139, 94, 60, 0.25);
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.9);
   font-family: inherit;
   color: var(--c-text-dark);
-  font-size: 0.95rem;
+  font-size: 1rem;
   resize: vertical;
 }
 
 /* Reduced button size */
-/* Reduced button size for mobile fix */
 .booking-card .btn {
-  height: auto; /* Let padding define height (approx 40px) */
-  font-size: 0.95rem; /* Slightly reduced */
+  height: auto;
+  font-size: 0.95rem;
   width: 100%;
-  padding: 12px 20px;
+  padding: 11px 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 16px; /* Spacing between last field and button */
-  margin-bottom: 20px; /* User requested 20px */
-  white-space: nowrap; /* Prevent weird line breaks as requested */
+  margin-top: 10px;
+  margin-bottom: 12px;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -331,12 +383,95 @@
 /* Time Picker Group */
 .time-picker-group {
   display: flex;
-  gap: 10px;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
+.time-picker-group #time {
+  flex: 1 1 0%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.time-picker-group #ampm {
+  flex: 0 0 75px;
+  width: 75px;
+  min-width: 0;
+}
+
+/* ===== MOBILE COMPACT OPTIMIZATION ===== */
 @media (max-width: 600px) {
-  .time-picker-group {
-    flex-direction: column;
+  .booking-card {
+    padding: 1.15rem 0.95rem;
+    border-radius: var(--radius-md);
+  }
+
+  .booking-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.65rem !important;
+  }
+
+  /* Compact grid & spacing on mobile */
+  .booking-card .form-fields-group {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
+
+  .booking-card .form-fields-group + .form-fields-group {
+    margin-top: 0.45rem;
+  }
+
+  .booking-card .form-group {
+    margin-bottom: 0.45rem;
+  }
+
+  .booking-card .form-fields-group .form-group {
+    margin-bottom: 0;
+  }
+
+  .booking-card label {
+    font-size: 0.78rem;
+    margin-bottom: 0.15rem;
+  }
+
+  /* Smaller, sleek input boxes */
+  .booking-card .form-control,
+  .booking-card select.form-control,
+  .booking-card input[type="date"],
+  .booking-card input[type="date"].form-control {
+    padding: 0.4rem 0.65rem;
+    height: 36px;
+    font-size: 1rem; /* Prevents auto-zoom in iOS Safari */
+    border-radius: 6px;
+  }
+
+  .booking-card .form-control-textarea {
+    min-height: 50px;
+    padding: 0.4rem 0.65rem;
+    font-size: 1rem;
+  }
+
+  .booking-card .time-picker-group {
+    gap: 6px;
+  }
+
+  .booking-card .time-picker-group #ampm {
+    flex: 0 0 70px;
+    width: 70px;
+  }
+
+  .booking-card #submit-group {
+    margin-top: 0.55rem !important;
+  }
+
+  .booking-card .btn {
+    padding: 9px 14px;
+    font-size: 0.9rem;
+    margin-top: 6px;
+    margin-bottom: 4px;
   }
 }
 
