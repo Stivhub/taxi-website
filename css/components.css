@@ -596,7 +596,7 @@ input[type="date"].form-control {
 /* ===== JAISALMER SECTION ===== */
 .jaisalmer-service {
   position: relative;
-  background: url('../assets/images/hero-jaisalmer.png') no-repeat center/cover;
+  background: url('../assets/images/hero-jaisalmer.webp') no-repeat center/cover;
   padding: 100px 0;
   color: white;
   text-align: center;

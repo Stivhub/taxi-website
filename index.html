@@ -8,6 +8,9 @@
     content="Premium taxi booking in Rajasthan. Explore Jaisalmer and beyond with our top-tier fleet.">
   <title>YashmeeTours | Premium Taxi Booking</title>
 
+  <!-- Preload Critical LCP Hero Image -->
+  <link rel="preload" as="image" href="assets/images/hero-jaisalmer.webp" type="image/webp" fetchpriority="high">
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
@@ -33,16 +36,19 @@
       overflow: hidden;
     }
 
-    /* Background image layer (separate so we can animate it) */
+    /* Hero Image Layer (LCP Element) */
     .hero-bg {
       position: absolute;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('assets/images/hero-jaisalmer.png') no-repeat center/cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
       animation: heroZoom 20s ease-out forwards;
       will-change: transform;
+      z-index: 0;
+      display: block;
     }
 
     @keyframes heroZoom {
@@ -386,7 +392,7 @@
       }
 
       .hero-bg {
-        background-position: 65% center;
+        object-position: 65% center;
       }
 
       .booking-widget {
@@ -603,7 +609,13 @@
 
   <!-- HERO SECTION -->
   <section class="hero">
-    <div class="hero-bg"></div>
+    <img src="assets/images/hero-jaisalmer.webp"
+         alt="Yashmee Tours - Premium Taxi Booking in Rajasthan"
+         class="hero-bg"
+         fetchpriority="high"
+         decoding="sync"
+         width="1200"
+         height="674">
     <div class="container">
       <div class="hero-content fade-down">
         <h1 class="hero-title">Experience the <span>Magic</span> of Rajasthan</h1>
