@@ -9,7 +9,9 @@
   <title>YashmeeTours | Premium Taxi Booking</title>
 
   <!-- Preload Critical LCP Hero Image -->
-  <link rel="preload" as="image" href="assets/images/hero-jaisalmer.webp" type="image/webp" fetchpriority="high">
+  <!-- Preload Critical LCP Hero Image (Responsive) -->
+  <link rel="preload" as="image" href="assets/images/hero-jaisalmer-mobile.webp" type="image/webp" media="(max-width: 600px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/hero-jaisalmer.webp" type="image/webp" media="(min-width: 601px)" fetchpriority="high">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -117,7 +119,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('assets/images/sam-sand-dunes.png') center/cover no-repeat;
+      background: url('assets/images/sam-sand-dunes.webp') center/cover no-repeat;
       z-index: -2;
     }
 
@@ -609,13 +611,20 @@
 
   <!-- HERO SECTION -->
   <section class="hero">
-    <img src="assets/images/hero-jaisalmer.webp"
-         alt="Yashmee Tours - Premium Taxi Booking in Rajasthan"
-         class="hero-bg"
-         fetchpriority="high"
-         decoding="sync"
-         width="1200"
-         height="674">
+    <picture>
+      <!-- Mobile devices -->
+      <source media="(max-width: 600px)" srcset="assets/images/hero-jaisalmer-mobile.webp">
+      <!-- Laptops and desktops -->
+      <source media="(min-width: 601px)" srcset="assets/images/hero-jaisalmer.webp">
+      <!-- Fallback -->
+      <img src="assets/images/hero-jaisalmer.webp"
+           alt="Yashmee Tours - Premium Taxi Booking in Rajasthan"
+           class="hero-bg"
+           fetchpriority="high"
+           decoding="sync"
+           width="1200"
+           height="674">
+    </picture>
     <div class="container">
       <div class="hero-content fade-down">
         <h1 class="hero-title">Experience the <span>Magic</span> of Rajasthan</h1>
@@ -796,7 +805,7 @@
         <div class="place-card reveal reveal-stagger-1" onclick="window.location.href='contact.html#contact'">
           <div class="place-card-img">
             <span class="place-card-badge">Heritage</span>
-            <img src="./assets/images/jaisalmer-fort.jpg" alt="Jaisalmer Fort - Sonar Quila" loading="lazy">
+            <img src="./assets/images/jaisalmer-fort.webp" alt="Jaisalmer Fort - Sonar Quila" loading="lazy" decoding="async" width="736" height="414">
           </div>
           <div class="place-card-body">
             <h3>Jaisalmer Fort</h3>
@@ -810,7 +819,7 @@
         <div class="place-card reveal reveal-stagger-2" onclick="window.location.href='contact.html#contact'">
           <div class="place-card-img">
             <span class="place-card-badge">Desert</span>
-            <img src="./assets/images/sam-sand-dunes.png" alt="Sam Sand Dunes at sunset" loading="lazy">
+            <img src="./assets/images/sam-sand-dunes.webp" alt="Sam Sand Dunes at sunset" loading="lazy" decoding="async" width="800" height="800">
           </div>
           <div class="place-card-body">
             <h3>Sam Sand Dunes</h3>
@@ -824,7 +833,7 @@
         <div class="place-card reveal reveal-stagger-3" onclick="window.location.href='contact.html#contact'">
           <div class="place-card-img">
             <span class="place-card-badge">Architecture</span>
-            <img src="./assets/images/patwon-ki-haveli.png" alt="Patwon Ki Haveli intricate facade" loading="lazy">
+            <img src="./assets/images/patwon-ki-haveli.webp" alt="Patwon Ki Haveli intricate facade" loading="lazy" decoding="async" width="800" height="800">
           </div>
           <div class="place-card-body">
             <h3>Patwon Ki Haveli</h3>
@@ -838,7 +847,7 @@
         <div class="place-card reveal reveal-stagger-1" onclick="window.location.href='contact.html#contact'">
           <div class="place-card-img">
             <span class="place-card-badge">Nature</span>
-            <img src="./assets/images/gadisar-lake.png" alt="Gadisar Lake with temples" loading="lazy">
+            <img src="./assets/images/gadisar-lake.webp" alt="Gadisar Lake with temples" loading="lazy" decoding="async" width="800" height="800">
           </div>
           <div class="place-card-body">
             <h3>Gadisar Lake</h3>
@@ -852,7 +861,7 @@
         <div class="place-card reveal reveal-stagger-2" onclick="window.location.href='contact.html#contact'">
           <div class="place-card-img">
             <span class="place-card-badge">Mystery</span>
-            <img src="./assets/images/kuldhara-village.png" alt="Kuldhara abandoned village ruins" loading="lazy">
+            <img src="./assets/images/kuldhara-village.webp" alt="Kuldhara abandoned village ruins" loading="lazy" decoding="async" width="800" height="800">
           </div>
           <div class="place-card-body">
             <h3>Kuldhara Village</h3>
@@ -866,7 +875,7 @@
         <div class="place-card reveal reveal-stagger-3" onclick="window.location.href='contact.html#contact'">
           <div class="place-card-img">
             <span class="place-card-badge">Royal</span>
-            <img src="./assets/images/bada-bagh.png" alt="Bada Bagh royal cenotaphs at sunset" loading="lazy">
+            <img src="./assets/images/bada-bagh.webp" alt="Bada Bagh royal cenotaphs at sunset" loading="lazy" decoding="async" width="800" height="800">
           </div>
           <div class="place-card-body">
             <h3>Bada Bagh</h3>
@@ -880,8 +889,7 @@
         <div class="place-card reveal reveal-stagger-1" onclick="window.location.href='contact.html#contact'">
           <div class="place-card-img">
             <span class="place-card-badge">Spiritual</span>
-            <img src="./assets/images/tanot-mata-temple.png" alt="Tanot Mata Temple exterior near India-Pakistan border"
-              loading="lazy">
+            <img src="./assets/images/tanot-mata-temple.webp" alt="Tanot Mata Temple exterior near India-Pakistan border" loading="lazy" decoding="async" width="800" height="800">
           </div>
           <div class="place-card-body">
             <h3>Tanot Mata Temple</h3>
@@ -895,8 +903,7 @@
         <div class="place-card reveal reveal-stagger-2" onclick="window.location.href='contact.html#contact'">
           <div class="place-card-img">
             <span class="place-card-badge">Historic</span>
-            <img src="./assets/images/longewala-border.png"
-              alt="Longewala war memorial with military tanks in Rajasthan desert" loading="lazy">
+            <img src="./assets/images/longewala-border.webp" alt="Longewala war memorial with military tanks in Rajasthan desert" loading="lazy" decoding="async" width="800" height="800">
           </div>
           <div class="place-card-body">
             <h3>Longewala Border</h3>
@@ -910,8 +917,7 @@
         <div class="place-card reveal reveal-stagger-3" onclick="window.location.href='contact.html#contact'">
           <div class="place-card-img">
             <span class="place-card-badge">Jain Heritage</span>
-            <img src="./assets/images/lodurva-jain-temple.png"
-              alt="Lodurva Jain Temple with ornate sandstone carvings near Jaisalmer" loading="lazy">
+            <img src="./assets/images/lodurva-jain-temple.webp" alt="Lodurva Jain Temple with ornate sandstone carvings near Jaisalmer" loading="lazy" decoding="async" width="800" height="800">
           </div>
           <div class="place-card-body">
             <h3>Lodurva (Lodhruva)</h3>
@@ -1079,8 +1085,7 @@
         <!-- Car 1 -->
         <div class="hover-card reveal reveal-stagger-1">
           <div class="img-zoom-wrapper">
-            <img src="./assets/images/innova.png" alt="Toyota Innova Crysta"
-              style="height: 220px; width: 100%; object-fit: cover;">
+            <img src="./assets/images/innova.webp" alt="Toyota Innova Crysta" loading="lazy" decoding="async" width="800" height="533" style="height: 220px; width: 100%; object-fit: cover;">
           </div>
           <div class="car-card-content">
             <h3>Toyota Innova Crysta</h3>
@@ -1097,8 +1102,7 @@
         <!-- Car 2 -->
         <div class="hover-card reveal reveal-stagger-2">
           <div class="img-zoom-wrapper">
-            <img src="./assets/images/dzire.png" alt="Swift Dzire"
-              style="height: 220px; width: 100%; object-fit: cover;">
+            <img src="./assets/images/dzire.webp" alt="Swift Dzire" loading="lazy" decoding="async" width="800" height="800" style="height: 220px; width: 100%; object-fit: cover;">
           </div>
           <div class="car-card-content">
             <h3>Swift Dzire</h3>
@@ -1115,8 +1119,7 @@
         <!-- Car 3 -->
         <div class="hover-card reveal reveal-stagger-3">
           <div class="img-zoom-wrapper">
-            <img src="./assets/images/fortuner.png" alt="Toyota Fortuner"
-              style="height: 220px; width: 100%; object-fit: cover;">
+            <img src="./assets/images/fortuner.webp" alt="Toyota Fortuner" loading="lazy" decoding="async" width="800" height="800" style="height: 220px; width: 100%; object-fit: cover;">
           </div>
           <div class="car-card-content">
             <h3>Toyota Fortuner</h3>
@@ -1148,7 +1151,7 @@
       <div class="flex-row">
         <!-- Route 1 -->
         <div class="route-card reveal reveal-stagger-1" style="flex: 1; min-width: 250px;">
-          <img src="./assets/images/jaisalmer (1).jpg" alt="Jaisalmer Fort">
+          <img src="./assets/images/jaisalmer (1).webp" alt="Jaisalmer Fort" loading="lazy" decoding="async" width="736" height="414">
           <div class="route-card-overlay">
             <h3>Jaisalmer City Tour</h3>
             <p>Full day sightseeing</p>
@@ -1156,7 +1159,7 @@
         </div>
         <!-- Route 2 -->
         <div class="route-card reveal reveal-stagger-2" style="flex: 1; min-width: 250px;">
-          <img src="./assets/images/udaipur.jpg" alt="Udaipur">
+          <img src="./assets/images/udaipur.webp" alt="Udaipur" loading="lazy" decoding="async" width="600" height="400">
           <div class="route-card-overlay">
             <h3>Jodhpur to Udaipur</h3>
             <p>One-way drop (260km)</p>
@@ -1164,7 +1167,7 @@
         </div>
         <!-- Route 3 -->
         <div class="route-card reveal reveal-stagger-3" style="flex: 1; min-width: 250px;">
-          <img src="./assets/images/jaipur.jpg" alt="Jaipur">
+          <img src="./assets/images/jaipur.webp" alt="Jaipur" loading="lazy" decoding="async" width="659" height="800">
           <div class="route-card-overlay">
             <h3>Jaipur to Jaisalmer</h3>
             <p>Heritage route (560km)</p>
