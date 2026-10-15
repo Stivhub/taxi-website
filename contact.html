@@ -5,6 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us | YashmeeTours</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="manifest" href="site.webmanifest">
+
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/animations.css">
@@ -61,16 +70,62 @@
       min-width: 300px;
     }
 
-    .map-placeholder {
-      width: 100%;
-      height: 300px;
-      background: #e0e0e0;
+    /* Google Map Box */
+    .contact-map-card {
+      background: white;
       border-radius: var(--radius-md);
-      margin-top: 30px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--c-border);
+      overflow: hidden;
+      margin-top: 20px;
+      transition: var(--transition-smooth);
+    }
+
+    .contact-map-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+
+    .map-card-header {
+      padding: 12px 20px;
+      background: #FAF5EE;
+      border-bottom: 1px solid var(--c-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .map-card-header h4 {
+      font-size: 0.95rem;
+      color: var(--c-primary);
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: #666;
+      gap: 6px;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .map-directions-link {
+      font-size: 0.85rem;
+      color: var(--c-secondary);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.2s ease;
+    }
+
+    .map-directions-link:hover {
+      color: var(--c-primary);
+      text-decoration: underline;
+    }
+
+    .contact-map-frame {
+      width: 100%;
+      height: 230px;
+      border: 0;
+      display: block;
     }
   </style>
 </head>
@@ -132,7 +187,7 @@
         <div class="contact-icon">📍</div>
         <div>
           <h4 style="margin-bottom: 5px; color: var(--c-text-dark);">Office Address</h4>
-          <p style="color: #666;">Baba Bawdi, Near Indira Colony, Jaisalmer - 345001</p>
+          <p style="color: #666;"><a href="https://maps.app.goo.gl/LrY3r3Mqt3sAG5516" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Baba Bawdi, Near Indira Colony, Jaisalmer - 345001</a></p>
         </div>
       </div>
 
@@ -153,6 +208,21 @@
               target="_blank" rel="noopener noreferrer"
               style="color: inherit; text-decoration: none;">yashmeetours@gmail.com</a></p>
         </div>
+      </div>
+
+      <!-- GOOGLE MAP SMALL BOX -->
+      <div class="contact-map-card">
+        <div class="map-card-header">
+          <h4>📍 Yashmee Tours Office</h4>
+          <a href="https://maps.app.goo.gl/LrY3r3Mqt3sAG5516"
+            target="_blank" rel="noopener noreferrer" class="map-directions-link">
+            Get Directions ↗
+          </a>
+        </div>
+        <iframe class="contact-map-frame"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3557.5359524989763!2d70.9309716!3d26.9182187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3947bd81c708c4e1%3A0x898c62ed638e00bc!2sYashmee%20Tours!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Yashmee Tours Location - Jaisalmer"></iframe>
       </div>
     </div>
 

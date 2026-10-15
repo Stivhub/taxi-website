@@ -904,3 +904,107 @@ input[type="date"].form-control {
     padding: 24px;
   }
 }
+
+/* ===== LUXURY TICKER / MARQUEE RIBBON ===== */
+.luxury-ticker-bar {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #18110B;
+  border-top: 1.5px solid rgba(224, 169, 109, 0.45);
+  border-bottom: 1.5px solid rgba(224, 169, 109, 0.45);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.35);
+  padding: 18px 0;
+  z-index: 5;
+  user-select: none;
+}
+
+.luxury-ticker-bar::before,
+.luxury-ticker-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.luxury-ticker-bar::before {
+  left: 0;
+  background: linear-gradient(90deg, #18110B 0%, transparent 100%);
+}
+
+.luxury-ticker-bar::after {
+  right: 0;
+  background: linear-gradient(270deg, #18110B 0%, transparent 100%);
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: luxuryTickerScroll 35s linear infinite;
+  will-change: transform;
+}
+
+.luxury-ticker-bar:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+.ticker-content {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.ticker-item {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #F8EFE4;
+  letter-spacing: 0.6px;
+  transition: color 0.3s ease;
+  cursor: default;
+}
+
+.ticker-item:hover {
+  color: var(--c-accent);
+}
+
+.ticker-star {
+  color: var(--c-accent);
+  font-size: 0.85rem;
+  margin: 0 28px;
+  font-style: normal;
+  display: inline-block;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 5px rgba(224, 169, 109, 0.7));
+}
+
+@keyframes luxuryTickerScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .luxury-ticker-bar {
+    padding: 14px 0;
+  }
+  .ticker-item {
+    font-size: 1.05rem;
+  }
+  .ticker-star {
+    margin: 0 18px;
+    font-size: 0.75rem;
+  }
+  .ticker-track {
+    animation-duration: 25s;
+  }
+}
+
